@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: aggregation
+Version: 0.0.1
+Summary: Ranking aggregation
+Home-page: https://www.noeliarico.dev
+Author: Noelia Rico,
+Author-email: noeliarico@uniovi.es
+License: UNKNOWN
+Project-URL: Bug Tracker, https://www.noeliarico.dev
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Quick installation
+
+```
+pip install aggregation
+```
+
+
+
