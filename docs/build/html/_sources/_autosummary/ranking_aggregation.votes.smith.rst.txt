@@ -1,0 +1,30 @@
+ranking\_aggregation.votes.smith
+================================
+
+.. automodule:: ranking_aggregation.votes.smith
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      smith_matrix
+      smith_set
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

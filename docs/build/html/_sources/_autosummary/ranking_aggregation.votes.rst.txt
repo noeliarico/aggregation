@@ -1,0 +1,36 @@
+ranking\_aggregation.votes
+==========================
+
+.. automodule:: ranking_aggregation.votes
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   ranking_aggregation.votes.lehmer
+   ranking_aggregation.votes.outranking_matrix
+   ranking_aggregation.votes.profiles
+   ranking_aggregation.votes.ranking
+   ranking_aggregation.votes.scores
+   ranking_aggregation.votes.smith
+

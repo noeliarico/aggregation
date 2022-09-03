@@ -1,0 +1,23 @@
+ranking\_aggregation.votes.outranking\_matrix
+=============================================
+
+.. automodule:: ranking_aggregation.votes.outranking_matrix
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

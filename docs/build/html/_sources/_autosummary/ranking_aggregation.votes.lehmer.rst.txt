@@ -1,0 +1,30 @@
+ranking\_aggregation.votes.lehmer
+=================================
+
+.. automodule:: ranking_aggregation.votes.lehmer
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      from_factoradic_to_ranking
+      from_int_to_factoradic
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

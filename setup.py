@@ -4,8 +4,8 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="aggregation", 
-    version="0.0.1",
+    name="ranking_aggregation", 
+    version="0.0.2",
     author="Noelia Rico,",
     author_email="noeliarico@uniovi.es",
     description="Ranking aggregation",

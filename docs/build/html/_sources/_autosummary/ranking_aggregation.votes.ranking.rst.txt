@@ -1,0 +1,30 @@
+ranking\_aggregation.votes.ranking
+==================================
+
+.. automodule:: ranking_aggregation.votes.ranking
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      print_ranking
+      ranking_to_lineal
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

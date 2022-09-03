@@ -1,0 +1,32 @@
+ranking\_aggregation.votes.scores
+=================================
+
+.. automodule:: ranking_aggregation.votes.scores
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      azzini_score
+      borda_score
+      condorcet_score
+      copeland_score
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

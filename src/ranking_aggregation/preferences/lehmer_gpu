@@ -1,0 +1,74 @@
+@cuda.jit
+def from_int_to_factoradic_gpu(factoradic):
+
+  # get the number of elements
+  n = factoradic.shape[1]
+
+  # get the index of the thread
+  idx = cuda.grid(1)
+
+  # the idx must be a permutation of the n candidates
+  if idx < factoradic.shape[0]:
+
+    # calculate the factoradic value
+    quotient = idx
+    radix = 1
+    while quotient != 0:
+      quotient, remainder = divmod(quotient, radix)
+      factoradic[idx, n-radix]=remainder
+      radix+=1
+
+@cuda.jit
+def from_factoradic_to_ranking_gpu(factorial_number):
+  
+  ############### GET THE FACTORIAL NUMBER FROM IDX ############################
+
+  # get the number of elements
+  n = factorial_number.shape[1]
+
+  # get the index of the thread
+  idx = cuda.grid(1)
+
+  # the idx must be a permutation of the n candidates
+  if idx < factorial_number.shape[0]:
+
+    # calculate the factoradic value
+    quotient = idx
+    radix = 1
+    while quotient != 0:
+      quotient, remainder = divmod(quotient, radix)
+      factorial_number[idx, n-radix]=remainder
+      radix+=1
+
+  ############### GET THE RANKING FROM THE FACTORIAL NUMBER ####################
+
+  # initialize an array of the same size to mark the
+  # alternatives that have been already added to the
+  # ranking during the exploration.
+  # Initially all falso.
+  # Important: boolean array to reduce memory
+  alternatives = cuda.local.array(4, dtype=np.bool_)
+
+  # for each position of the factorial representation
+  for i in range(n):
+    # count Falses until:
+    until = factorial_number[idx, i] + 1
+    # logging.debug("Let's count {} False(s)".format(until))
+    # set initial counter to 0
+    count = 0
+    # iterator for each position of the boolean alternatives
+    alt = 0
+    # iterate
+    while count < until:
+      # logging.debug("Alternative {} is {}".format(alt, alternatives[alt]))
+      if not alternatives[alt]:
+        count += 1
+      alt += 1
+      # logging.debug("Count = {}, Alternative = {}".format(count, alt))
+    # logging.debug("Count=Alternative, stop")
+    # at this point count = until and alt has the alternative 
+    # that is in the i position
+    # mark the alternative that appears in the ranking
+    alternatives[alt-1] = True
+    # overwrite the ranking to save memory
+    factorial_number[idx, i] = alt-1
