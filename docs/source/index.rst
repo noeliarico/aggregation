@@ -29,7 +29,19 @@ Modules available in this package
 :fa:`bars`
 :fa:`spinner,text-white bg-primary fa-2x,style=fa`
 
-- ``ranking_rules`` contain the functions related to obtain a consensus ranking from a profile
+- ``data``  contains files with different outranking matrices to use for testing.
+   These matrices are stored in different files under the structure name of ``om_n_m.py``
+   `n` number of alternatives and `m` number of voters.
+
+- ``preferences`` contains function related to the ouranking matrices
+
+   - ``matrices``
+   - ``profiles``
+   - ``ranking``
+   - ``scores``
+   - ``smith``
+
+- ``ranking_rules`` contain the functions related to obtain a consensus ranking from a profile.
 
    - List of rules that do not require the complete profiles, only the outranking matrices:
       - ``condorcet``
@@ -43,7 +55,6 @@ The steps required to obtain a ranking from an integer number are the following:
 
 - Use the ``from_int_to_factoradic`` function to obtain the factorial representation
 - Use the 
-- An icon :fas:`spinner;sd-bg-primary sd-bg-text-primary`, some more text.
 
 
 An example of how to obtain the factorial representation for all the possible
