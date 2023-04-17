@@ -83,9 +83,15 @@ om    = np.array([  [0,  2,  4,  2,  4, 10,  5,  7],
                     [5,  5,  5,  2,  5, 10,  0,  7],
                     [3,  5,  5,  0,  5, 10,  3,  0]])
 
+om = np.array([
+	[0,5,7,3],
+	[5,0,10,6],
+	[3,0,0,6],
+	[7,4,4,0]])
+
 start = time.time()
 import ranking_aggregation.ranking_rules.kemeny as k
-results = k.kemeny(om)
+results = k.kemeny(om, debug=True)
 print(results)
 print(time.time() - start) # 11.15 con print y 2.41 sin
 

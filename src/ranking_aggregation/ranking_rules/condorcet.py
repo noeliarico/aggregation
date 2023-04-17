@@ -24,7 +24,11 @@ def condorcet(om, see_points = False):
     thereis = np.all(np.in1d(np.arange(n), ombool))
     return None if not thereis else n-1-ombool
 
-
+def condorcet_winner(om, see_points = False):
+    n = om.shape[0]
+    m = om[0,1]+om[1,0]
+    ombool = (np.where(om > (m//2), 1, 0)).sum(axis=1)
+    return (n-1) in ombool
 # def betas_to_lineal(r):
 #     pos = np.argsort(r)
 #     res = np.zeros(r.size)

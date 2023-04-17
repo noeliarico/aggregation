@@ -3,14 +3,14 @@ import ranking_aggregation.preferences.ranking as ranking
 import ranking_aggregation.preferences.matrices as matrices
 import ranking_aggregation.examples.om as om
 import numpy as np
-from ranking_aggregation.data.script_om8 import *
+from ranking_aggregation.data.script_om4 import *
 
 #profile = om.om4_1 # [0], [3,1,2] hay condorcet winner
 profile = om.om5_1
 #profile = om.om8_1
 #profile = om.om4_2
 
-profile = om_8_15
+profile = om_4_11
 
 print("\nThe profile of rankings:")
 print(profile)
@@ -35,6 +35,6 @@ import ranking_aggregation.ranking_rules.kemeny as k
 print("\nThe result obtained with the Kemeny method:")
 kemeny_result = k.kemeny(profile, debug = False)
 ranking.print_ints_as_rankings(kemeny_result['winners'], 
-                                #alternatives = np.array(['a0', 'a1', 'a2', 'a3']), 
-                                nalternatives = 8)
+                                alternatives = np.array(['a0', 'a1', 'a2', 'a3']), 
+                                nalternatives = 4)
 

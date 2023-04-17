@@ -15,13 +15,20 @@ src/ranking_aggregation/data/script_om12.py
 src/ranking_aggregation/data/script_om4.py
 src/ranking_aggregation/data/script_om8.py
 src/ranking_aggregation/examples/__init__.py
+src/ranking_aggregation/examples/acotando_sin_condorcet.py
+src/ranking_aggregation/examples/benchmark_sort_matrices.py
 src/ranking_aggregation/examples/compare_condorcert_and_kemeny.py
 src/ranking_aggregation/examples/e_ranking.py
+src/ranking_aggregation/examples/generador_datos_tfg.py
+src/ranking_aggregation/examples/generador_tfgs.py
 src/ranking_aggregation/examples/om.py
+src/ranking_aggregation/examples/random_generation.py
 src/ranking_aggregation/examples/t_coopeland.py
 src/ranking_aggregation/examples/t_kemeny_distance.py
 src/ranking_aggregation/examples/t_lehmer.py
 src/ranking_aggregation/examples/t_smith.py
+src/ranking_aggregation/generators/__init__.py
+src/ranking_aggregation/generators/generate.py
 src/ranking_aggregation/preferences/__init__.py
 src/ranking_aggregation/preferences/matrices.py
 src/ranking_aggregation/preferences/profiles.py
@@ -32,3 +39,5 @@ src/ranking_aggregation/ranking_rules/__init__.py
 src/ranking_aggregation/ranking_rules/condorcet.py
 src/ranking_aggregation/ranking_rules/kemeny.py
 src/ranking_aggregation/ranking_rules/scoring.py
+tests/test_scores.py
+tests/test_smithset.py

@@ -7,7 +7,7 @@ def distance_from_ranking_to_profile(ranking, profile):
         # for each alternative in col (consider only elements over diagonal)
         for j in range(i+1, n): 
             # alternative j in the column is preferred over the alternative i in
-            # the row, which means that the position of i in the ranking i.e.
+            # the row, which means thapython3 -m buildt the position of i in the ranking i.e.
             # ranking[i] is greater than the position of j in the ranking, which
             # in ranking[j] thus ranking[i] > ranking[j] means j succ i
             if ranking[i] > ranking[j]:

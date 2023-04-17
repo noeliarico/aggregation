@@ -1,5 +1,5 @@
 import math
-import ranking_aggregation.preferences.lehmer as lehmer
+import ranking_aggregation.preferences.ranking as lehmer
 
 # Example of how to obtain the factorial representation for all the possible
 # permutations of 4 alternatives

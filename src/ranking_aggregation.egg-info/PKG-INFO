@@ -5,9 +5,7 @@ Summary: Ranking aggregation
 Home-page: https://www.noeliarico.dev
 Author: Noelia Rico,
 Author-email: noeliarico@uniovi.es
-License: UNKNOWN
 Project-URL: Bug Tracker, https://www.noeliarico.dev
-Platform: UNKNOWN
 Classifier: Programming Language :: Python :: 3
 Classifier: Operating System :: OS Independent
 Requires-Python: >=3.6
@@ -19,6 +17,4 @@ License-File: LICENSE
 ```
 pip install aggregation
 ```
-
-
 
