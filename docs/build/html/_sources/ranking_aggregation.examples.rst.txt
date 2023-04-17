@@ -1,0 +1,109 @@
+ranking\_aggregation.examples package
+=====================================
+
+Submodules
+----------
+
+ranking\_aggregation.examples.acotando\_sin\_condorcet module
+-------------------------------------------------------------
+
+.. automodule:: ranking_aggregation.examples.acotando_sin_condorcet
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ranking\_aggregation.examples.benchmark\_sort\_matrices module
+--------------------------------------------------------------
+
+.. automodule:: ranking_aggregation.examples.benchmark_sort_matrices
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ranking\_aggregation.examples.compare\_condorcert\_and\_kemeny module
+---------------------------------------------------------------------
+
+.. automodule:: ranking_aggregation.examples.compare_condorcert_and_kemeny
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ranking\_aggregation.examples.e\_ranking module
+-----------------------------------------------
+
+.. automodule:: ranking_aggregation.examples.e_ranking
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ranking\_aggregation.examples.generador\_datos\_tfg module
+----------------------------------------------------------
+
+.. automodule:: ranking_aggregation.examples.generador_datos_tfg
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ranking\_aggregation.examples.generador\_tfgs module
+----------------------------------------------------
+
+.. automodule:: ranking_aggregation.examples.generador_tfgs
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ranking\_aggregation.examples.om module
+---------------------------------------
+
+.. automodule:: ranking_aggregation.examples.om
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ranking\_aggregation.examples.random\_generation module
+-------------------------------------------------------
+
+.. automodule:: ranking_aggregation.examples.random_generation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ranking\_aggregation.examples.t\_coopeland module
+-------------------------------------------------
+
+.. automodule:: ranking_aggregation.examples.t_coopeland
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ranking\_aggregation.examples.t\_kemeny\_distance module
+--------------------------------------------------------
+
+.. automodule:: ranking_aggregation.examples.t_kemeny_distance
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ranking\_aggregation.examples.t\_lehmer module
+----------------------------------------------
+
+.. automodule:: ranking_aggregation.examples.t_lehmer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ranking\_aggregation.examples.t\_smith module
+---------------------------------------------
+
+.. automodule:: ranking_aggregation.examples.t_smith
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: ranking_aggregation.examples
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,4 +1,4 @@
-ranking\_aggregation.ranking\_rules.condorcet
+﻿ranking\_aggregation.ranking\_rules.condorcet
 =============================================
 
 .. automodule:: ranking_aggregation.ranking_rules.condorcet
@@ -14,6 +14,7 @@ ranking\_aggregation.ranking\_rules.condorcet
    .. autosummary::
    
       condorcet
+      condorcet_winner
    
    
 

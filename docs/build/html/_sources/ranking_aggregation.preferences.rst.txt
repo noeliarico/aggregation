@@ -1,0 +1,53 @@
+ranking\_aggregation.preferences package
+========================================
+
+Submodules
+----------
+
+ranking\_aggregation.preferences.matrices module
+------------------------------------------------
+
+.. automodule:: ranking_aggregation.preferences.matrices
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ranking\_aggregation.preferences.profiles module
+------------------------------------------------
+
+.. automodule:: ranking_aggregation.preferences.profiles
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ranking\_aggregation.preferences.ranking module
+-----------------------------------------------
+
+.. automodule:: ranking_aggregation.preferences.ranking
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ranking\_aggregation.preferences.scores module
+----------------------------------------------
+
+.. automodule:: ranking_aggregation.preferences.scores
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ranking\_aggregation.preferences.smith module
+---------------------------------------------
+
+.. automodule:: ranking_aggregation.preferences.smith
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: ranking_aggregation.preferences
+   :members:
+   :undoc-members:
+   :show-inheritance:

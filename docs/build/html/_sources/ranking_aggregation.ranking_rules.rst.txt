@@ -1,0 +1,37 @@
+ranking\_aggregation.ranking\_rules package
+===========================================
+
+Submodules
+----------
+
+ranking\_aggregation.ranking\_rules.condorcet module
+----------------------------------------------------
+
+.. automodule:: ranking_aggregation.ranking_rules.condorcet
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ranking\_aggregation.ranking\_rules.kemeny module
+-------------------------------------------------
+
+.. automodule:: ranking_aggregation.ranking_rules.kemeny
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ranking\_aggregation.ranking\_rules.scoring module
+--------------------------------------------------
+
+.. automodule:: ranking_aggregation.ranking_rules.scoring
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: ranking_aggregation.ranking_rules
+   :members:
+   :undoc-members:
+   :show-inheritance:

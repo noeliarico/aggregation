@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.abspath('../../src/'))
 # -- Project information -----------------------------------------------------
 
 project = 'Ranking aggregation'
-copyright = '2022, Noelia Rico'
+copyright = '2023, Noelia Rico'
 author = 'Noelia Rico'
 
 
@@ -28,6 +28,7 @@ author = 'Noelia Rico'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'sphinx_rtd_theme', #
     'sphinx.ext.autodoc',  # Core library for html generation from docstrings
     'sphinx.ext.autosummary',  # Create neat summary tables
     'sphinx_panels' # to make fontawesome work
@@ -49,10 +50,10 @@ exclude_patterns = []
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-# html_theme = 'sphinx_rtd_theme'
-import sphinx_nameko_theme
-html_theme = 'nameko'
-html_theme_path = [sphinx_nameko_theme.get_html_theme_path()]
+html_theme = 'sphinx_rtd_theme'
+# import sphinx_nameko_theme
+# html_theme = 'nameko'
+# html_theme_path = [sphinx_nameko_theme.get_html_theme_path()]
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

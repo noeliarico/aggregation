@@ -1,0 +1,37 @@
+ranking\_aggregation.data package
+=================================
+
+Submodules
+----------
+
+ranking\_aggregation.data.script\_om12 module
+---------------------------------------------
+
+.. automodule:: ranking_aggregation.data.script_om12
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ranking\_aggregation.data.script\_om4 module
+--------------------------------------------
+
+.. automodule:: ranking_aggregation.data.script_om4
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ranking\_aggregation.data.script\_om8 module
+--------------------------------------------
+
+.. automodule:: ranking_aggregation.data.script_om8
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: ranking_aggregation.data
+   :members:
+   :undoc-members:
+   :show-inheritance:

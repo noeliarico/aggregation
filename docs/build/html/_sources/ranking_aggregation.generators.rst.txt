@@ -1,0 +1,21 @@
+ranking\_aggregation.generators package
+=======================================
+
+Submodules
+----------
+
+ranking\_aggregation.generators.generate module
+-----------------------------------------------
+
+.. automodule:: ranking_aggregation.generators.generate
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: ranking_aggregation.generators
+   :members:
+   :undoc-members:
+   :show-inheritance:

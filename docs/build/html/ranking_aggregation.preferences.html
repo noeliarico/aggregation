@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ranking_aggregation.preferences package &mdash; Ranking aggregation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Ranking aggregation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">ranking_aggregation.preferences package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-ranking_aggregation.preferences.matrices">ranking_aggregation.preferences.matrices module</a></li>
+<li><a class="reference internal" href="#module-ranking_aggregation.preferences.profiles">ranking_aggregation.preferences.profiles module</a></li>
+<li><a class="reference internal" href="#module-ranking_aggregation.preferences.ranking">ranking_aggregation.preferences.ranking module</a></li>
+<li><a class="reference internal" href="#module-ranking_aggregation.preferences.scores">ranking_aggregation.preferences.scores module</a></li>
+<li><a class="reference internal" href="#module-ranking_aggregation.preferences.smith">ranking_aggregation.preferences.smith module</a></li>
+<li><a class="reference internal" href="#module-ranking_aggregation.preferences">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Ranking aggregation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">ranking_aggregation.preferences package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/ranking_aggregation.preferences.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ranking-aggregation-preferences-package">
+<h1>ranking_aggregation.preferences package<a class="headerlink" href="#ranking-aggregation-preferences-package" title="Permalink to this headline"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+</section>
+<section id="module-ranking_aggregation.preferences.matrices">
+<span id="ranking-aggregation-preferences-matrices-module"></span><h2>ranking_aggregation.preferences.matrices module<a class="headerlink" href="#module-ranking_aggregation.preferences.matrices" title="Permalink to this headline"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="ranking_aggregation.preferences.matrices.copeland_matrix">
+<span class="sig-prename descclassname"><span class="pre">ranking_aggregation.preferences.matrices.</span></span><span class="sig-name descname"><span class="pre">copeland_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ties</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ranking_aggregation.preferences.matrices.copeland_matrix" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-ranking_aggregation.preferences.profiles">
+<span id="ranking-aggregation-preferences-profiles-module"></span><h2>ranking_aggregation.preferences.profiles module<a class="headerlink" href="#module-ranking_aggregation.preferences.profiles" title="Permalink to this headline"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="ranking_aggregation.preferences.profiles.reorder_outranking_matrix">
+<span class="sig-prename descclassname"><span class="pre">ranking_aggregation.preferences.profiles.</span></span><span class="sig-name descname"><span class="pre">reorder_outranking_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profile</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ranking_aggregation.preferences.profiles.reorder_outranking_matrix" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-ranking_aggregation.preferences.ranking">
+<span id="ranking-aggregation-preferences-ranking-module"></span><h2>ranking_aggregation.preferences.ranking module<a class="headerlink" href="#module-ranking_aggregation.preferences.ranking" title="Permalink to this headline"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="ranking_aggregation.preferences.ranking.from_factoradic_to_ranking">
+<span class="sig-prename descclassname"><span class="pre">ranking_aggregation.preferences.ranking.</span></span><span class="sig-name descname"><span class="pre">from_factoradic_to_ranking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">factorial_number</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ranking_aggregation.preferences.ranking.from_factoradic_to_ranking" title="Permalink to this definition"></a></dt>
+<dd><p>Get the ranking associated with a factorial representation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>factorial_number</strong> (<em>np.array</em>) – Integer number to be converted into a factorial representation</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Ranking associated with the factorial representation</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ranking_aggregation.preferences.ranking.from_int_to_factoradic">
+<span class="sig-prename descclassname"><span class="pre">ranking_aggregation.preferences.ranking.</span></span><span class="sig-name descname"><span class="pre">from_int_to_factoradic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ranking_aggregation.preferences.ranking.from_int_to_factoradic" title="Permalink to this definition"></a></dt>
+<dd><p>Get the factorial representation of an integer number</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>idx</strong> (<em>int</em>) – Integer number to be converted into a factorial representation</p></li>
+<li><p><strong>idx</strong> – Number of digits used for the factorial represetnation</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Factorial representation of the idx given as imput</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ranking_aggregation.preferences.ranking.from_int_to_ranking">
+<span class="sig-prename descclassname"><span class="pre">ranking_aggregation.preferences.ranking.</span></span><span class="sig-name descname"><span class="pre">from_int_to_ranking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nalternatives</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ranking_aggregation.preferences.ranking.from_int_to_ranking" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ranking_aggregation.preferences.ranking.from_ints_to_ranking">
+<span class="sig-prename descclassname"><span class="pre">ranking_aggregation.preferences.ranking.</span></span><span class="sig-name descname"><span class="pre">from_ints_to_ranking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">numbers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nalternatives</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ranking_aggregation.preferences.ranking.from_ints_to_ranking" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ranking_aggregation.preferences.ranking.print_ints_as_rankings">
+<span class="sig-prename descclassname"><span class="pre">ranking_aggregation.preferences.ranking.</span></span><span class="sig-name descname"><span class="pre">print_ints_as_rankings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">numbers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nalternatives</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alternatives</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ranking_aggregation.preferences.ranking.print_ints_as_rankings" title="Permalink to this definition"></a></dt>
+<dd><p>Recibes a lis of numbers and print the rankings related to them</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>numbers</strong> (<em>_type_</em>) – _description_</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ranking_aggregation.preferences.ranking.print_ranking">
+<span class="sig-prename descclassname"><span class="pre">ranking_aggregation.preferences.ranking.</span></span><span class="sig-name descname"><span class="pre">print_ranking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ranking</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alternatives</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ranking_aggregation.preferences.ranking.print_ranking" title="Permalink to this definition"></a></dt>
+<dd><p>Print a graphical representation of the ranking</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ranking</strong> (<em>np.array</em>) – Ranking to print. Each element of the array contains the 
+position of the i-th element of the ranking</p></li>
+<li><p><strong>alternatives</strong> (<em>np.array</em><em>, </em><em>optional</em>) – Names of the alternatives. If none is given alternatives
+are named as a0, a1, a2…</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A string representing the ranking</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ranking_aggregation.preferences.ranking.ranking_to_linear">
+<span class="sig-prename descclassname"><span class="pre">ranking_aggregation.preferences.ranking.</span></span><span class="sig-name descname"><span class="pre">ranking_to_linear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ranking</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ranking_aggregation.preferences.ranking.ranking_to_linear" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a linear extension of a ranking with ties. The extension is 
+done in lexicographic order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ranking</strong> (<em>np.array</em>) – A ranking with ties</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A linear extension of the input ranking</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-ranking_aggregation.preferences.scores">
+<span id="ranking-aggregation-preferences-scores-module"></span><h2>ranking_aggregation.preferences.scores module<a class="headerlink" href="#module-ranking_aggregation.preferences.scores" title="Permalink to this headline"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="ranking_aggregation.preferences.scores.azzini_score">
+<span class="sig-prename descclassname"><span class="pre">ranking_aggregation.preferences.scores.</span></span><span class="sig-name descname"><span class="pre">azzini_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profile</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ranking_aggregation.preferences.scores.azzini_score" title="Permalink to this definition"></a></dt>
+<dd><p>Return the Azzini score of each alternative</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>profile</strong> (<em>np.array</em>) – Profile of rankings represented by the outranking matrix</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Azzini score of each alternative</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ranking_aggregation.preferences.scores.borda_score">
+<span class="sig-prename descclassname"><span class="pre">ranking_aggregation.preferences.scores.</span></span><span class="sig-name descname"><span class="pre">borda_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profile</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ranking_aggregation.preferences.scores.borda_score" title="Permalink to this definition"></a></dt>
+<dd><p>Return the Borda score of each alternative</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>profile</strong> (<em>np.array</em>) – Profile of rankings represented by the outranking matrix</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Borda score of each alternative</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ranking_aggregation.preferences.scores.condorcet_score">
+<span class="sig-prename descclassname"><span class="pre">ranking_aggregation.preferences.scores.</span></span><span class="sig-name descname"><span class="pre">condorcet_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profile</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ranking_aggregation.preferences.scores.condorcet_score" title="Permalink to this definition"></a></dt>
+<dd><p>Return the Condorcet score of each alternative</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>profile</strong> (<em>np.array</em>) – Profile of rankings represented by the outranking matrix</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Condorcet score of each alternative</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ranking_aggregation.preferences.scores.copeland_score">
+<span class="sig-prename descclassname"><span class="pre">ranking_aggregation.preferences.scores.</span></span><span class="sig-name descname"><span class="pre">copeland_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ties</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ranking_aggregation.preferences.scores.copeland_score" title="Permalink to this definition"></a></dt>
+<dd><p>Return the Copeland score of each alternative</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>profile</strong> (<em>np.array</em>) – Profile of rankings represented by the outranking matrix</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Copeland score of each alternative</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ranking_aggregation.preferences.scores.scores_to_ranking">
+<span class="sig-prename descclassname"><span class="pre">ranking_aggregation.preferences.scores.</span></span><span class="sig-name descname"><span class="pre">scores_to_ranking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scores</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">the_higher_the_better</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ranking_aggregation.preferences.scores.scores_to_ranking" title="Permalink to this definition"></a></dt>
+<dd><p>Get the scores given by some scoring method and returns a ranking</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>scores</strong> (<em>np.array</em>) – array containing in the i-th position the score obtained
+by the i-th alternative</p></li>
+<li><p><strong>the_higher_the_better</strong> (<em>bool</em><em>, </em><em>optional</em>) – sort the scores decreasingly when it is True
+and increasingly otherwise, defaults to True</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a ranking</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-ranking_aggregation.preferences.smith">
+<span id="ranking-aggregation-preferences-smith-module"></span><h2>ranking_aggregation.preferences.smith module<a class="headerlink" href="#module-ranking_aggregation.preferences.smith" title="Permalink to this headline"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="ranking_aggregation.preferences.smith.schwartz_matrix">
+<span class="sig-prename descclassname"><span class="pre">ranking_aggregation.preferences.smith.</span></span><span class="sig-name descname"><span class="pre">schwartz_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profile</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ranking_aggregation.preferences.smith.schwartz_matrix" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ranking_aggregation.preferences.smith.schwartz_set">
+<span class="sig-prename descclassname"><span class="pre">ranking_aggregation.preferences.smith.</span></span><span class="sig-name descname"><span class="pre">schwartz_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profile</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ranking_aggregation.preferences.smith.schwartz_set" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the Schwartz Set of the given profile of rankings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>profile</strong> (<em>_type_</em>) – _description_</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>_description_</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>_type_</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ranking_aggregation.preferences.smith.smith_matrix">
+<span class="sig-prename descclassname"><span class="pre">ranking_aggregation.preferences.smith.</span></span><span class="sig-name descname"><span class="pre">smith_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profile</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ranking_aggregation.preferences.smith.smith_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Recibes a profile of rankings and computes the Smith matrix. This matrix
+is the one necessary for computing the Smith set. It is a pairwise 
+comparison matrix where the alternatives are ordered according to their
+Copeland score. The alternative in the first row is the one with the highest
+Copeland score.</p>
+<p>The return has two objects:
+- matrix,   that is the Smith matrix
+- ids,   that is a np.array of n elements thaat contains ni the i-th element</p>
+<blockquote>
+<div><p>the index of the candidate in the i-th row</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>profile</strong> (<em>np.array</em>) – Profile of rankings (outranking matrix)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Smith matrix</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ranking_aggregation.preferences.smith.smith_set">
+<span class="sig-prename descclassname"><span class="pre">ranking_aggregation.preferences.smith.</span></span><span class="sig-name descname"><span class="pre">smith_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profile</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ranking_aggregation.preferences.smith.smith_set" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the Smith Set of the given profile of rankings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>profile</strong> (<em>_type_</em>) – _description_</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>_description_</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>_type_</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-ranking_aggregation.preferences">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ranking_aggregation.preferences" title="Permalink to this headline"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Noelia Rico.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
