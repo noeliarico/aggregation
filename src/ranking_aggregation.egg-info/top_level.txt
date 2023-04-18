@@ -1,6 +1,1 @@
-data
-examples
-generators
-indexes
-preferences
-ranking_rules
+ranking_aggregation

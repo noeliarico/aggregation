@@ -39,27 +39,32 @@ def num_of_alternatives_with_min_freq_in_each_pos(posm):
 # Mejor posicion de cada alternativa
 # beta1
 def best_pos_of_each_alternative(posm):
-    posmbool = posm > 0
-    return(posmbool.shape[1] - np.argmax(posmbool[:, ::-1], axis=1) - 1)
+    return(np.argmax(posm > 0, axis=1))
 
 # Peor posiciond e cada alternativa
 # beta2
 def worst_pos_of_each_alternative(posm):
-    return(np.argmax(posm > 0, axis=0))
+    return(posm.shape[1] - 1 - np.argmax(np.flip(posm > 0, axis=1), axis=1))
 
 # f1
-def max_freq_of_alternative_in_any_pos(posm):
+def max_freq_of_each_alternative(posm):
     return(np.max(posm, axis=0))
 
 # f2
-def min_freq_of_alternative_in_any_pos(posm):
+def min_freq_of_each_alternative(posm):
     return(np.min(posm, axis=0))
+
+def median_freq_of_each_alternative(posm):
+    return(np.median(posm, axis=0))
+
+def median_freq(posm):
+    return(np.median(median_freq_of_each_alternative(posm)))
 
 # d
 def dispersion_of_each_alternative(posm):
-    return(max_freq_of_alternative_in_any_pos(posm)-min_freq_of_alternative_in_any_pos(posm))
+    return(worst_pos_of_each_alternative(posm)-best_pos_of_each_alternative(posm))
 
-def dispersion_average(posm):
+def dispersion_avg(posm):
     return(np.mean(dispersion_of_each_alternative(posm)))
 
 def alternative_with_max_dispersion(posm):

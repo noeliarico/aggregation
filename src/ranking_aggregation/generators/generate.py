@@ -1,8 +1,6 @@
 import numpy as np
 from math import factorial
-import sys
-sys.path.append('./preferences')
-from ranking import from_int_to_ranking
+from ranking_aggregation.preferences.ranking import from_int_to_ranking
 
 def generate_profile_factoradic(n, m):
     num_rankings = np.math.factorial(n)
