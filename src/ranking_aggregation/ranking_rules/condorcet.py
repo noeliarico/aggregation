@@ -29,6 +29,26 @@ def condorcet_winner(om, see_points = False):
     m = om[0,1]+om[1,0]
     ombool = (np.where(om > (m//2), 1, 0)).sum(axis=1)
     return (n-1) in ombool
+
+def condorcet_winner_weak(om, see_points = False):
+    n = om.shape[0]
+    m = om[0,1]+om[1,0]
+    ombool = (np.where(om >= (m//2), 1, 0)).sum(axis=1)
+    return (n-1) in ombool
+
+
+def condorcet_loser(om, see_points = False):
+    n = om.shape[0]
+    m = om[0,1]+om[1,0]
+    ombool = (np.where(om <= (m//2), 1, 0)).sum(axis=1)
+    return n in ombool
+
+def condorcet_loser_weak(om, see_points = False):
+    n = om.shape[0]
+    m = om[0,1]+om[1,0]
+    ombool = (np.where(om < (m//2), 1, 0)).sum(axis=1)
+    return n in ombool
+
 # def betas_to_lineal(r):
 #     pos = np.argsort(r)
 #     res = np.zeros(r.size)

@@ -1,6 +1,6 @@
 import numpy as np
-import ranking_aggregation.preferences.scores as scores
 import ranking_aggregation.preferences.matrices as matrices
+import ranking_aggregation.ranking_rules.scores as scores
 
 def _boolean_matrix(profile):
     half = (profile[0,1]+profile[1,0])/2
@@ -36,7 +36,7 @@ def smith_matrix(profile):
     result['ids'] = s
     return result
 
-def smith_set(profile):
+def smith_set(om):
     """Computes the Smith Set of the given profile of rankings
 
     :param profile: _description_
@@ -44,10 +44,10 @@ def smith_set(profile):
     :return: _description_
     :rtype: _type_
     """
-    the_matrix = smith_matrix(profile)
+    the_matrix = smith_matrix(om)
     alt_names = the_matrix['ids']
     the_matrix = the_matrix['matrix']
-    for i in range(1,profile.shape[0]):
+    for i in range(1,om.shape[0]):
         # print("Evaluating row {}".format(i))
         total = 0
         for j in range(i):
@@ -57,7 +57,7 @@ def smith_set(profile):
         if total == 0: 
             break
     result = {}
-    if i != (profile.shape[0]-1):
+    if i != (om.shape[0]-1):
         result['winners'] = alt_names[:i]
         result['losers'] = alt_names[i:]
     else:

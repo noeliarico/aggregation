@@ -1,7 +1,7 @@
 import numpy as np
 from ranking_aggregation.preferences.matrices import copeland_matrix
 
-def borda_score(profile):
+def borda_score(om):
     """Return the Borda score of each alternative
 
     :param profile: Profile of rankings represented by the outranking matrix
@@ -10,7 +10,7 @@ def borda_score(profile):
     :return: Borda score of each alternative
     :rtype: np.array
     """
-    return profile.sum(axis=1) # return row sums
+    return om.sum(axis=1) # return row sums
 
 def azzini_score(profile):
     """Return the Azzini score of each alternative

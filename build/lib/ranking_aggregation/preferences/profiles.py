@@ -1,5 +1,5 @@
 import numpy as np
-import ranking_aggregation.preferences.scores as scores
+import ranking_aggregation.ranking_rules.scores as scores
 
 # create random profile of rankings
 

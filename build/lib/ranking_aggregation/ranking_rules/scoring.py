@@ -1,6 +1,6 @@
 import numpy as np
 
-import ranking_aggregation.preferences.scores as scores
+import ranking_aggregation.ranking_rules.scores as scores
 
 def borda(profile):
     """Get the outranking matrix and returns the Borda Count winning ranking

@@ -66,6 +66,9 @@ def print_ints_as_rankings(numbers, nalternatives = None, alternatives = None):
         factorial = from_int_to_factoradic(i, nalternatives)
         ranking = from_factoradic_to_ranking(factorial)
         print("{})\t {}".format(i, print_ranking(ranking, alternatives)))
+
+def get_winner_alternative(ranking):
+    return np.where(ranking == 0)[0][0]
     
 ################### LEHMER'S CODE ##############################################
 
