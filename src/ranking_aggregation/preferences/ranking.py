@@ -3,7 +3,6 @@
 import numpy as np
 import math
 
-
 def print_ranking(ranking, alternatives = None):
     """Print a graphical representation of the ranking
 

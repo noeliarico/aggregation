@@ -1,7 +1,7 @@
 import numpy as np
 from ranking_aggregation.preferences.matrices import copeland_matrix
 
-def borda_score(om):
+def borda_score(om, normalized = False):
     """Return the Borda score of each alternative
 
     :param profile: Profile of rankings represented by the outranking matrix
@@ -10,7 +10,12 @@ def borda_score(om):
     :return: Borda score of each alternative
     :rtype: np.array
     """
-    return om.sum(axis=1) # return row sums
+    if not normalized:
+        return om.sum(axis=1) # return row sums
+    else: # return row sums divided by max possible score
+        num_alternatives = om.shape[0]
+        num_voters = om[0,1]+om[1,0]
+        return om.sum(axis=1)/((num_alternatives-1)*num_voters) 
 
 def azzini_score(profile):
     """Return the Azzini score of each alternative
@@ -23,7 +28,7 @@ def azzini_score(profile):
     """
     return profile.sum(axis=1) > profile.sum(axis=0) # boolean
 
-def copeland_score(profile, win = 1., lose = 0., ties = 0.5):
+def copeland_score(om, normalized = False, win = 1., lose = 0., ties = 0.5):
     """Return the Copeland score of each alternative
 
     :param profile: Profile of rankings represented by the outranking matrix
@@ -32,7 +37,11 @@ def copeland_score(profile, win = 1., lose = 0., ties = 0.5):
     :return: Copeland score of each alternative
     :rtype: np.array
     """
-    return np.sum(copeland_matrix(profile), axis = 1, dtype=np.uint16)
+    if not normalized:
+        return np.sum(copeland_matrix(om), axis = 1, dtype=np.uint16)
+    else:
+        num_alternatives = om.shape[0]
+        return np.sum(copeland_matrix(om), axis = 1, dtype=np.uint16)/(num_alternatives-1)
 
 def condorcet_score(profile):
     """Return the Condorcet score of each alternative
@@ -67,3 +76,8 @@ def scores_to_ranking(scores, the_higher_the_better = True):
     # the ranking 
     order = order.argsort() 
     return(order)
+
+def scores_to_ranking_with_ties(scores, the_higher_the_better = True):
+    order = np.unique(np.sort(scores))
+    if the_higher_the_better:
+        order = np.flip(order)  

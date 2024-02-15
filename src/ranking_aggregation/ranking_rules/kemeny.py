@@ -1,4 +1,7 @@
 # distance_from_ranking_to_profile()
+def distance_betwee_two_rankings(r1, r2):
+    
+
 def distance_from_ranking_to_profile(ranking, profile):
 
     n = ranking.shape[0]

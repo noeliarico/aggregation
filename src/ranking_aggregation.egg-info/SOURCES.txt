@@ -14,7 +14,6 @@ src/ranking_aggregation/data/__init__.py
 src/ranking_aggregation/data/script_om12.py
 src/ranking_aggregation/data/script_om4.py
 src/ranking_aggregation/data/script_om8.py
-src/ranking_aggregation/examples/__init__.py
 src/ranking_aggregation/examples/acotando_sin_condorcet.py
 src/ranking_aggregation/examples/benchmark_sort_matrices.py
 src/ranking_aggregation/examples/compare_condorcert_and_kemeny.py
@@ -36,6 +35,8 @@ src/ranking_aggregation/preferences/matrices.py
 src/ranking_aggregation/preferences/profiles.py
 src/ranking_aggregation/preferences/ranking.py
 src/ranking_aggregation/preferences/smith.py
+src/ranking_aggregation/preflib_compatibility/__init__.py
+src/ranking_aggregation/preflib_compatibility/preflib_utils.py
 src/ranking_aggregation/ranking_rules/__init__.py
 src/ranking_aggregation/ranking_rules/condorcet.py
 src/ranking_aggregation/ranking_rules/kemeny.py

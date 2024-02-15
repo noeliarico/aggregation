@@ -1,0 +1,59 @@
+Metadata-Version: 2.1
+Name: csv-ical
+Version: 2.0.5
+Summary: Convert between CSV and iCal
+Home-page: https://github.com/albertyw/csv-ical
+Author: Albert Wang
+Author-email: git@albertyw.com
+License: MIT
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: Topic :: Software Development
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Typing :: Typed
+Requires-Python: >=3.5
+Description-Content-Type: text/markdown
+Requires-Dist: icalendar (<5.0.0,>=4.0.1)
+Provides-Extra: dev
+Provides-Extra: test
+
+# CSV/iCal Converter
+
+[![PyPI](https://img.shields.io/pypi/v/csv-ical)](https://pypi.org/project/csv-ical/)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/csv-ical)
+![PyPI - License](https://img.shields.io/pypi/l/csv-ical)
+
+[![Build Status](https://drone.albertyw.com/api/badges/albertyw/csv-ical/status.svg)](https://drone.albertyw.com/albertyw/csv-ical)
+[![Dependency Status](https://pyup.io/repos/github/albertyw/csv-ical/shield.svg)](https://pyup.io/repos/github/albertyw/csv-ical/)
+[![Code Climate](https://codeclimate.com/github/albertyw/csv-ical/badges/gpa.svg)](https://codeclimate.com/github/albertyw/csv-ical)
+[![Test Coverage](https://codeclimate.com/github/albertyw/csv-ical/badges/coverage.svg)](https://codeclimate.com/github/albertyw/csv-ical/coverage)
+
+A simple script to convert data in CSV format to iCal format and vice
+versa.
+
+## Installation
+
+```bash
+pip install csv-ical
+```
+
+## Usage
+
+See the example files.
+
+## Development
+
+```bash
+pip install -r requirements-test.txt
+ruff check .
+mypy . --strict --ignore-missing-imports
+coverage run -m unittest
+coverage report -m
+```
