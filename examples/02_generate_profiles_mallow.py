@@ -8,13 +8,6 @@ from ranking_aggregation.preflib_compatibility.preflib_utils import *
 from ranking_aggregation.disk_operations.disk_operations import get_disk_path
 
 
-# Definition of parameters
-reps = 100
-dispersions = [0.1, 0.4, 0.7, 1]
-# dispersions = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
-
-path_folder = f"{get_disk_path()}/profiles/mallow1/"
-
 # Example on how to generate
 ## instance = OrdinalInstance()
 ## instance.populate_mallows(10, 4, [1], [0.2], [(0, 1, 2, 3)])
@@ -23,7 +16,7 @@ path_folder = f"{get_disk_path()}/profiles/mallow1/"
 # Using Mallow with a dispersion parameter 0.2 and reference order 0 > 1 > 2 > 3
 
 
-def create_profiles_using_mallow(num_alternatives, num_voters, reps, dispersions):
+def create_profiles_using_mallow(num_alternatives, num_voters, reps, dispersions, path_folder):
     # Initialize a dataframe to track the profiles generated
     df = pd.DataFrame()
 
@@ -72,11 +65,18 @@ def create_profiles_using_mallow(num_alternatives, num_voters, reps, dispersions
     df.to_csv(path_folder + "mallow1.csv", index=False, mode="w+")  # mode overwrite
 
 
-nums_alternatives = [3, 4]
-nums_voters = [10, 100, 500]
+if __name__ == "__main__":
+    # Definition of parameters
+    reps = 100
+    dispersions = [0.1, 0.4, 0.7, 1]
+    # dispersions = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
 
-# Execute the function to create the profiles
-for num_alternatives in nums_alternatives:
-    for num_voters in nums_voters:
-        create_profiles_using_mallow(num_alternatives, num_voters, reps, dispersions)
-        print("{} alternatives, {} voters, DONE".format(num_alternatives, num_voters))
+    path_folder = f"{get_disk_path()}/profiles/mallow1/"
+    nums_alternatives = [3, 4]
+    nums_voters = [10, 100, 500]
+
+    # Execute the function to create the profiles
+    for num_alternatives in nums_alternatives:
+        for num_voters in nums_voters:
+            create_profiles_using_mallow(num_alternatives, num_voters, reps, dispersions, path_folder)
+            print("{} alternatives, {} voters, DONE".format(num_alternatives, num_voters))

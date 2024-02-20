@@ -9,16 +9,6 @@ from ranking_aggregation.preflib_compatibility.preflib_utils import *
 from ranking_aggregation.disk_operations.disk_operations import get_disk_path
 
 
-# Definition of parameters
-reps = 100
-prob_of_subpoblation = [0.1, 0.2, 0.3, 0.4, 0.5]
-distance_between_the_base_rankings = [0.25, 0.5, 0.75, 1]
-dispersion1 = 0.4
-dispersion2 = 0.4
-
-path_folder = f"{get_disk_path()}/profiles/mallow2/"
-
-
 # Example on how to generate
 ## instance = OrdinalInstance()
 ## instance.populate_mallows(10, 4, [0.4, 0.6], [0.2, 0.3], [((0, 1, 2)), (1, 0, 2)])
@@ -49,11 +39,16 @@ def generate_initialization(num_alternatives, desired_distance, threshold=0.05):
     return base_ranking, tuple(new_ranking), distance
 
 
-# Example of use
-## print(generate_initialization(10, 0.25))
-
-
-def create_profiles_using_mallow(num_alternatives, num_voters):
+def create_profiles_using_mallow(
+    num_alternatives,
+    num_voters,
+    reps,
+    prob_of_subpoblation,
+    distance_between_the_base_rankings,
+    dispersion1,
+    dispersion2,
+    path_folder,
+):
     # Initialize a dataframe to track the profiles generated
     df = pd.DataFrame()
 
@@ -150,10 +145,29 @@ def create_profiles_using_mallow(num_alternatives, num_voters):
     df.to_csv(path_folder + "mallow.csv", index=False, mode="w+")  # mode overwrite
 
 
-nums_alternatives = [10, 15, 20]
-num_voters = 100
+if __name__ == "__main__":
+    # Definition of parameters
+    reps = 100
+    prob_of_subpoblation = [0.1, 0.2, 0.3, 0.4, 0.5]
+    distance_between_the_base_rankings = [0.25, 0.5, 0.75, 1]
+    dispersion1 = 0.4
+    dispersion2 = 0.4
 
-# Execute the function to create the profiles
-for num_alternatives in nums_alternatives:
-    create_profiles_using_mallow(num_alternatives, num_voters)
-    print("{} alternatives, DONE".format(num_alternatives))
+    path_folder = f"{get_disk_path()}/profiles/mallow2/"
+    nums_alternatives = [10, 15, 20]
+    num_voters = 100
+
+    # Execute the function to create the profiles
+    for num_alternatives in nums_alternatives:
+        create_profiles_using_mallow(
+            num_alternatives,
+            num_voters,
+            reps,
+            prob_of_subpoblation,
+            distance_between_the_base_rankings,
+            dispersion1,
+            dispersion2,
+            path_folder,
+        )
+
+        print("{} alternatives, DONE".format(num_alternatives))
