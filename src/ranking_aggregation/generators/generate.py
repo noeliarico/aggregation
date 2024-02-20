@@ -2,6 +2,7 @@ import numpy as np
 from math import factorial
 from ranking_aggregation.preferences.ranking import from_int_to_ranking
 
+
 def generate_profile_factoradic(n, m):
     """Create a profile of rankings
 

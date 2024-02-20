@@ -8,15 +8,16 @@ import ranking_aggregation.ranking_rules.scores as scores
 
 ####
 # print profile of rankings
-    
+
+
 def reorder_outranking_matrix(profile):
     s = scores.borda_score(profile)
     # s = scores.scores_to_ranking(s)
     s = np.flip(np.argsort(s))
     print(s)
-    profile = profile[s,:]
-    profile = profile[:,s]
+    profile = profile[s, :]
+    profile = profile[:, s]
     result = {}
-    result['matrix'] = profile
-    result['ids'] = s
+    result["matrix"] = profile
+    result["ids"] = s
     return result

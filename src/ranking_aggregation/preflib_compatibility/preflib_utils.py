@@ -23,17 +23,17 @@ def preflib_divide(preflib_profile):
 
 
 def preflib_to_pairwise_preferences_matrix(rankings, weights):
-    """Computes for each pair of alternatives that number of voters that 
+    """Computes for each pair of alternatives that number of voters that
     prefer one over the other in any ranking
     """
-    
+
     # rankings, weights = preflib_divide(preflib_profile)
     num_unique_rankings, num_alternatives = rankings.shape
     # Initialize the matrix
     pref_matrix = np.zeros((num_alternatives, num_alternatives), dtype=int)
     # Do the counting
     for i in range(num_alternatives):  # alternative i
-        for j in range(i+1, num_alternatives):  # alternative j
+        for j in range(i + 1, num_alternatives):  # alternative j
             # for each pair of alternatives i,j count the number of times that
             # i is in a better position than j
             # i is in a worse position than j
@@ -46,12 +46,12 @@ def preflib_to_pairwise_preferences_matrix(rankings, weights):
                 pos_i = np.argwhere(r == i)[0][0]
                 pos_j = np.argwhere(r == j)[0][0]
                 if pos_i < pos_j:  # i in a better position than j
-                    i_better_than_j += 1*weights[k]
+                    i_better_than_j += 1 * weights[k]
                 elif pos_j < pos_i:  # i in a worse position than j
-                    i_worse_than_j += 1*weights[k]
+                    i_worse_than_j += 1 * weights[k]
                 else:  # they are in the same position
-                    i_better_than_j += 0.5*weights[k]
-                    i_worse_than_j += 0.5*weights[k]
+                    i_better_than_j += 0.5 * weights[k]
+                    i_worse_than_j += 0.5 * weights[k]
             # After checking all the rankings update the matrix
             pref_matrix[i, j] = i_better_than_j
             pref_matrix[j, i] = i_worse_than_j
@@ -60,7 +60,7 @@ def preflib_to_pairwise_preferences_matrix(rankings, weights):
 
 def preflib_to_positions_matrix(rankings, weights):
     """Computes for each alternatives its frequency in each position"""
-    #rankings, weights = preflib_divide(preflib_profile)
+    # rankings, weights = preflib_divide(preflib_profile)
     num_unique_rankings, num_alternatives = rankings.shape
 
     pos_matrix = np.zeros((num_alternatives, num_alternatives), dtype=int)
@@ -68,5 +68,5 @@ def preflib_to_positions_matrix(rankings, weights):
         for alternative in range(num_alternatives):
             r = rankings[ranking, :]
             pos = np.argwhere(r == alternative)[0][0]
-            pos_matrix[alternative, pos] += 1*weights[ranking]
+            pos_matrix[alternative, pos] += 1 * weights[ranking]
     return pos_matrix

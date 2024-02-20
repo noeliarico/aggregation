@@ -371,4 +371,3 @@ dependencies:
       - aggregation==0.0.1
       - pip==22.1.1
       - ranking-aggregation==0.0.1
-prefix: /Users/noeliarico/opt/anaconda3/envs/env_aggregation
