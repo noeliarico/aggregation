@@ -49,13 +49,19 @@ def get_info_from_name(text):
 pattern = "*.obj"
 for path, subdirs, files in os.walk(path_folder):
     evaluated = 1
+
     for name in files:
         if fnmatch(name, pattern):
             file_name = os.path.join(path, name)
+
             profiles = load_list_of_profiles(file_name)
+
             info = get_info_from_name(file_name)
+
             print("--> {} ({}/{})".format(name, evaluated, len(files)))
+
             evaluated += 1
+
             df = pd.DataFrame(
                 columns=(
                     "num_alternatives",
@@ -101,9 +107,12 @@ for path, subdirs, files in os.walk(path_folder):
                     "name",
                 )
             )
+
             for i in range(len(profiles)):
                 om = preflib_to_pairwise_preferences_matrix(profiles[i][0], profiles[i][1])
+
                 posm = preflib_to_positions_matrix(profiles[i][0], profiles[i][1])
+
                 df.loc[i] = [
                     info["num_alternatives"],
                     info["num_voters"],
@@ -141,4 +150,5 @@ for path, subdirs, files in os.walk(path_folder):
                     np.max(profiles[i][1]),
                     name.replace(".obj", ""),
                 ]
+
             df.to_csv(path_folder + "metrics/metrics_" + name.replace(".obj", "") + ".csv", index=False)
