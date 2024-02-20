@@ -1,5 +1,5 @@
 Metadata-Version: 2.1
-Name: ranking-aggregation
+Name: ranking_aggregation
 Version: 0.0.2
 Summary: Ranking aggregation
 Home-page: https://www.noeliarico.dev
@@ -11,6 +11,14 @@ Classifier: Operating System :: OS Independent
 Requires-Python: >=3.6
 Description-Content-Type: text/markdown
 License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: python-dotenv
+
+# Table of contents
+
+- [Table of contents](#table-of-contents)
+- [Quick installation](#quick-installation)
+- [Commits guide](#commits-guide)
 
 # Quick installation
 
@@ -18,3 +26,26 @@ License-File: LICENSE
 pip install aggregation
 ```
 
+# Commits guide
+
+```
+♻️ [Change functionality] ♻️
+⚡️ [Improve code] ⚡️
+🐛 [Fix bug] 🐛
+🩹 [Fix non critical bug] 🩹
+🚑️ [Critical Hotfix] 🚑️
+✅ [Add feature] ✅
+✨ [Add small feature] ✨
+🩺 [Add sanity check] 🩺
+🧪 [Add non tested feature]
+🎉 [Feature passed a test]
+🚧 [Feature not completed] 🚧
+💥 [Add breaking changes] 💥
+➕ [Add dependency] ➕
+➖ [Remove dependency] ➖
+🗑️ [Remove] 🗑️
+📝 [Document] 📝
+🔀 [Merge] 🔀
+🎨 [Code formatting] 🎨
+🔒️ [Fix security issues] 🔒️
+```

@@ -14,6 +14,8 @@ src/ranking_aggregation/data/__init__.py
 src/ranking_aggregation/data/script_om12.py
 src/ranking_aggregation/data/script_om4.py
 src/ranking_aggregation/data/script_om8.py
+src/ranking_aggregation/disk_operations/__init__.py
+src/ranking_aggregation/disk_operations/disk_operations.py
 src/ranking_aggregation/examples/acotando_sin_condorcet.py
 src/ranking_aggregation/examples/benchmark_sort_matrices.py
 src/ranking_aggregation/examples/compare_condorcert_and_kemeny.py

@@ -32,4 +32,5 @@ pip install aggregation
 🔀 [Merge] 🔀
 🎨 [Code formatting] 🎨
 🔒️ [Fix security issues] 🔒️
+🚀 [Built deployment package] 🚀
 ```

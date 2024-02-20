@@ -55,6 +55,6 @@ if __name__ == "__main__":
 
     path_folder = f"{get_disk_path()}/profiles/"
 
-    generate_profiles(nums_alternatives, nums_voters, reps, path_folder)
+    # generate_profiles(nums_alternatives, nums_voters, reps, path_folder)
 
-    # profiles = load_list_of_profiles(f"{path_folder}objects/profile_Mallow1_3_10_0.1.obj")
+    profiles = load_list_of_profiles(f"{path_folder}objects/profile_Mallow1_3_10_0.1.obj")

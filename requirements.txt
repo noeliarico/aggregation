@@ -1,4 +1,5 @@
 numpy==1.24.3
 preflibtools==2.0.6
-dotenv=1.0.1
-ranking-aggregation @ file:///Users/noeliarico/Desktop/aggregation
+python-dotenv==1.0.1
+# ranking-aggregation @ file:///Users/noeliarico/Desktop/aggregation
+ranking-aggregation @ file:///Users/villarmario/Documents/GitHub/aggregation
