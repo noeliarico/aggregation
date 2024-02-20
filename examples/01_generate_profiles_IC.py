@@ -1,13 +1,17 @@
 from preflibtools.instances import OrdinalInstance
-from ranking_aggregation.preflib_compatibility.preflib_utils import *
 import numpy as np
 import pickle
 
+from ranking_aggregation.preflib_compatibility.preflib_utils import *
+
+from ranking_aggregation.disk_operations.disk_operations import get_disk_path
+
 # Definition of parameters
-nums_alternatives = [5, 10, 15, 20] 
+nums_alternatives = [5, 10, 15, 20]
 nums_voters = [10, 11, 50, 51, 100, 101, 150, 151, 200, 201, 500, 501, 1000, 1001]
-reps =  50
-path_folder = "/Users/noeliarico/Desktop/Toulouse/profiles/"
+reps = 50
+
+path_folder = f"{get_disk_path()}/profiles/"
 
 list_profiles = []
 np.random.seed(1)
@@ -27,17 +31,16 @@ for num_alternatives in nums_alternatives:
             # to the list of all the profiles
             list_profiles.append((ranking, weights))
             # Save the object in plain text using Preflib's format
-            instance.write(
-                path_folder+"profile_IC_{}_{}_{}.soc".format(num_alternatives, num_voters, i))
+            instance.write(path_folder + "profile_IC_{}_{}_{}.soc".format(num_alternatives, num_voters, i))
         # Save the list with all the profiles to an object
-        file_obj = open(
-            path_folder+"objects/profiles_IC_{}_{}.obj".format(num_alternatives, num_voters), 'wb')
+        file_obj = open(path_folder + "objects/profiles_IC_{}_{}.obj".format(num_alternatives, num_voters), "wb")
         pickle.dump(list_profiles, file_obj)
 
 
 def load_list_of_profiles(file_name):
-    file_handler = open(file_name, 'rb')
+    file_handler = open(file_name, "rb")
     profiles = pickle.load(file_handler)
     return profiles
+
 
 # instance.populate_urn(100, 4, 100)
