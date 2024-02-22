@@ -8,7 +8,12 @@ from joblib import Parallel, delayed
 from ranking_aggregation.preflib_compatibility.preflib_utils import *
 from ranking_aggregation.indexes.indexes_for_position_matrix import *
 from ranking_aggregation.ranking_rules.scores import copeland_score, borda_score
-from ranking_aggregation.ranking_rules.condorcet import condorcet_winner, condorcet_loser, condorcet_winner_weak
+from ranking_aggregation.ranking_rules.condorcet import (
+    condorcet,
+    condorcet_winner,
+    condorcet_loser,
+    condorcet_winner_weak,
+)
 from ranking_aggregation.disk_operations.disk_operations import get_disk_path
 
 
@@ -80,6 +85,7 @@ def generate_ind_index_file(path, name):
             "most_frequent_alternative_in_first_pos",
             "relevance_of_each_alternative",
             # Condorcet properties of the profile
+            "condorcet_ranking",
             "condorcet_winner",
             "condorcet_loser",
             "condorcet_weak_winner",
@@ -125,6 +131,7 @@ def generate_ind_index_file(path, name):
             number_of_most_frequent_alternatives_in_first_pos(posm),
             most_frequent_alternative_in_first_pos(posm),
             relevance_of_each_alternative(posm),
+            condorcet(om),
             condorcet_winner(om),
             condorcet_loser(om),
             condorcet_winner_weak(om),

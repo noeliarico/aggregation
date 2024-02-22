@@ -20,7 +20,7 @@ import numpy as np
 
 def condorcet(om, see_points=False):
     """
-    Determines if there is a Condorcet winner in the given preference matrix.
+    Determines if there is a Condorcet ranking in the given preference matrix.
 
     Parameters:
     - om (numpy.ndarray): The preference matrix representing the pairwise comparison of alternatives.
@@ -31,10 +31,18 @@ def condorcet(om, see_points=False):
     """
     n = om.shape[0]
     m = om[0, 1] + om[1, 0]
+
+    # Get the number of times an alternative wins in a pairwise comparison to the others
     ombool = (np.where(om > (m // 2), 1, 0)).sum(axis=1)
+
     if see_points:
         print(ombool)
+
+    # I a Condorcet ranking, there are no loops. Therefore, an alternative wins against all the others,
+    # another one wins against all the others except the first one, and so on, until the last alternative
+    # loses against all the others.
     thereis = np.all(np.in1d(np.arange(n), ombool))
+
     return None if not thereis else n - 1 - ombool
 
 
