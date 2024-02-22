@@ -4,6 +4,7 @@ import numpy as np
 import pickle
 import pandas as pd
 import os
+from joblib import Parallel, delayed
 
 from ranking_aggregation.preflib_compatibility.preflib_utils import *
 from ranking_aggregation.disk_operations.disk_operations import get_disk_path
@@ -84,13 +85,25 @@ if __name__ == "__main__":
     reps = 100
     nums_alternatives = [5, 10, 15, 20]
     nums_voters = [10, 50, 100, 200, 500, 1000]
-    dispersions = [0.1, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+    # dispersions = [0.1, 0.4, 0.5, 0.6] + [0.7, 0.73, 0.76, 0.79, 0.82, 0.85, 0.88, 0.91, 0.94, 0.97, 1.0]
+    dispersions = [0.1, 0.4, 0.5, 0.6, 0.7, 0.75, 0.80, 0.85, 0.90, 0.95, 1.0]
     # dispersions = [0.1, 0.4, 0.7, 1]
 
     path_folder = f"{get_disk_path()}/profiles/mallow/"
 
     # Execute the function to create the profiles
-    for num_alternatives in nums_alternatives:
-        for num_voters in nums_voters:
-            create_profiles_using_mallow(num_alternatives, num_voters, reps, dispersions, path_folder)
-            print("{} alternatives, {} voters, DONE".format(num_alternatives, num_voters))
+    # for num_alternatives in nums_alternatives:
+    #     for num_voters in nums_voters:
+    #         create_profiles_using_mallow(num_alternatives, num_voters, reps, dispersions, path_folder)
+    #         print("{} alternatives, {} voters, DONE".format(num_alternatives, num_voters))
+
+    # Execute the function to create the profiles
+    def generate_profiles(num_alternatives, num_voters, reps, dispersions, path_folder):
+        create_profiles_using_mallow(num_alternatives, num_voters, reps, dispersions, path_folder)
+        print("{} alternatives, {} voters, DONE".format(num_alternatives, num_voters))
+
+    Parallel(n_jobs=-1)(
+        delayed(generate_profiles)(num_alternatives, num_voters, reps, dispersions, path_folder)
+        for num_alternatives in nums_alternatives
+        for num_voters in nums_voters
+    )

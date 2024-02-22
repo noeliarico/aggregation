@@ -47,8 +47,6 @@ def generate_ind_index_file(path, name):
 
     info = get_info_from_name(file_name)
 
-    print("--> {}".format(name))
-
     df = pd.DataFrame(
         columns=(
             "num_alternatives",
@@ -131,7 +129,7 @@ def generate_ind_index_file(path, name):
             number_of_most_frequent_alternatives_in_first_pos(posm),
             most_frequent_alternative_in_first_pos(posm),
             relevance_of_each_alternative(posm),
-            condorcet(om),
+            condorcet(om) is not None,
             condorcet_winner(om),
             condorcet_loser(om),
             condorcet_winner_weak(om),
@@ -140,9 +138,12 @@ def generate_ind_index_file(path, name):
             name.replace(".obj", ""),
         ]
 
-    filename = path_folder + "metrics/metrics_" + name.replace(".obj", "") + ".csv"
-    check_create_file(filename)
-    df.to_csv(filename, index=False)
+    csv_filename = path_folder + "metrics/metrics_" + name.replace(".obj", "") + ".csv"
+    check_create_file(csv_filename)
+
+    df.to_csv(csv_filename, index=False)
+
+    print("--> {}".format(name))
 
 
 # Get all the files with extension .obj
@@ -156,8 +157,20 @@ def generate_obj_indexes_files(path_folder):
         if fnmatch(name, pattern)
     )
 
+    # for path, subdirs, files in os.walk(path_folder):
+    #     for name in files:
+    #         if fnmatch(name, pattern):
+    #             generate_ind_index_file(path, name)
+
 
 if __name__ == "__main__":
+    import time
+
     path_folder = f"{get_disk_path()}/profiles/mallow/"
 
+    start_time = time.time()
     generate_obj_indexes_files(path_folder)
+    end_time = time.time()
+
+    execution_time = end_time - start_time
+    print(f"Execution time: {execution_time} seconds")
