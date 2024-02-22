@@ -3,6 +3,7 @@ from preflibtools.instances.sampling import *
 import numpy as np
 import pickle
 import pandas as pd
+import os
 
 from ranking_aggregation.preflib_compatibility.preflib_utils import *
 from ranking_aggregation.disk_operations.disk_operations import get_disk_path
@@ -14,6 +15,13 @@ from ranking_aggregation.disk_operations.disk_operations import get_disk_path
 ## print(instance.flatten_strict())
 # will generate a profile with 4 voters and 10 alternatives
 # Using Mallow with a dispersion parameter 0.2 and reference order 0 > 1 > 2 > 3
+
+
+def check_create_file(filename):
+    if not os.path.exists(filename):
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
+        with open(filename, "w"):
+            pass
 
 
 def create_profiles_using_mallow(num_alternatives, num_voters, reps, dispersions, path_folder):
@@ -42,6 +50,8 @@ def create_profiles_using_mallow(num_alternatives, num_voters, reps, dispersions
 
             # Save the object in plain text using Preflib's format
             name = "profile_mallow_{}_{}_{}_{}.soc".format(num_alternatives, num_voters, d, i)
+
+            check_create_file(path_folder + name)
             instance.write(path_folder + name)
 
             # Create a new row with the info of the profile for the dataframe
@@ -53,9 +63,13 @@ def create_profiles_using_mallow(num_alternatives, num_voters, reps, dispersions
             ## -> end of: for i in range(reps)
 
         # Save the list with all the profiles to an object
-        name = "profile_Mallow1_{}_{}_{}.obj".format(num_alternatives, num_voters, d)
+        name = "profile_mallow_{}_{}_{}.obj".format(num_alternatives, num_voters, d)
+
+        check_create_file(path_folder + "objects/" + name)
+
         file_obj = open(path_folder + "objects/" + name, "wb")
         pickle.dump(list_profiles, file_obj)
+        file_obj.close()
 
     # Rename the columns of the dataframe
     df.columns = ["num_voters", "num_alternatives", "desired_distance", "id", "name"]
@@ -68,12 +82,12 @@ def create_profiles_using_mallow(num_alternatives, num_voters, reps, dispersions
 if __name__ == "__main__":
     # Definition of parameters
     reps = 100
-    dispersions = [0.1, 0.4, 0.7, 1]
-    # dispersions = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+    nums_alternatives = [5, 10, 15, 20]
+    nums_voters = [10, 50, 100, 200, 500, 1000]
+    dispersions = [0.1, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+    # dispersions = [0.1, 0.4, 0.7, 1]
 
-    path_folder = f"{get_disk_path()}/profiles/mallow1/"
-    nums_alternatives = [3, 4]
-    nums_voters = [10, 100, 500]
+    path_folder = f"{get_disk_path()}/profiles/mallow/"
 
     # Execute the function to create the profiles
     for num_alternatives in nums_alternatives:

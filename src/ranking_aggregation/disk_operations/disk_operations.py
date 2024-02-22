@@ -14,7 +14,7 @@ def get_disk_path() -> str:
 
     :return: str
     """
-    disk_path = "localDB"
+    disk_path = f"{os.getcwd()}/localDB"
 
     if os.getenv("DISK_PATH") is not None:
         disk_path = os.getenv("DISK_PATH")

@@ -154,6 +154,6 @@ def generate_obj_indexes_files(path_folder):
 
 
 if __name__ == "__main__":
-    path_folder = f"{get_disk_path()}/profiles/mallow1/"
+    path_folder = f"{get_disk_path()}/profiles/mallow/"
 
     generate_obj_indexes_files(path_folder)
