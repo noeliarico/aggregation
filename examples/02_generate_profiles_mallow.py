@@ -3,8 +3,9 @@ from preflibtools.instances.sampling import *
 import numpy as np
 import pickle
 import pandas as pd
-import os
 from joblib import Parallel, delayed
+
+from utils import check_create_file
 
 from ranking_aggregation.preflib_compatibility.preflib_utils import *
 from ranking_aggregation.disk_operations.disk_operations import get_disk_path
@@ -16,13 +17,6 @@ from ranking_aggregation.disk_operations.disk_operations import get_disk_path
 ## print(instance.flatten_strict())
 # will generate a profile with 4 voters and 10 alternatives
 # Using Mallow with a dispersion parameter 0.2 and reference order 0 > 1 > 2 > 3
-
-
-def check_create_file(filename):
-    if not os.path.exists(filename):
-        os.makedirs(os.path.dirname(filename), exist_ok=True)
-        with open(filename, "w"):
-            pass
 
 
 def create_profiles_using_mallow(num_alternatives, num_voters, reps, dispersions, path_folder):
@@ -84,7 +78,8 @@ if __name__ == "__main__":
     # Definition of parameters
     reps = 100
     nums_alternatives = [5, 10, 15, 20]
-    nums_voters = [10, 50, 100, 200, 500, 1000]
+    nums_voters = [10, 20, 30, 40, 50, 100, 150, 200, 300, 400, 500, 650, 800, 1000]
+    # nums_voters = [10, 50, 100, 200, 500, 1000]
     # dispersions = [0.1, 0.4, 0.5, 0.6] + [0.7, 0.73, 0.76, 0.79, 0.82, 0.85, 0.88, 0.91, 0.94, 0.97, 1.0]
     dispersions = [0.1, 0.4, 0.5, 0.6, 0.7, 0.75, 0.80, 0.85, 0.90, 0.95, 1.0]
     # dispersions = [0.1, 0.4, 0.7, 1]

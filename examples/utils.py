@@ -1,4 +1,9 @@
 # Function to get info about the filename
+import os
+
+import pandas as pd
+
+
 def get_info_from_name(text: str, metrics: bool = False):
     """
     Get the information of the profile from the filename.
@@ -36,3 +41,44 @@ def get_info_from_name(text: str, metrics: bool = False):
         dictionary.update({"mallow_disp": result[init_index + 3]})
 
     return dictionary
+
+
+def check_create_file(filename: str):
+    """
+    Check if the file exists. If not, create it.
+
+    Parameters
+    ----------
+    filename : str
+        The path to the file.
+    """
+    if not os.path.exists(filename):
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
+        with open(filename, "w"):
+            pass
+
+
+def add_profile_type(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Add a new column to the dataframe df with the type of profile.
+
+    The type can be:
+        - "CR" if the profile has a Condorcet winner.
+        - "CW" if the profile has a Condorcet weak winner.
+        - "NC" if the profile has neither a Condorcet winner nor a Condorcet weak winner.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        The dataframe to modify.
+
+    Returns
+    -------
+    df : pandas.DataFrame
+        The modified dataframe.
+    """
+    df["profile_type"] = df.apply(
+        lambda row: "CR" if row["condorcet_ranking"] else "CW" if row["condorcet_winner"] else "NC", axis=1
+    )
+
+    return df
