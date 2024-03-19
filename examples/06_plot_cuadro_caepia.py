@@ -91,8 +91,8 @@ def generate_plot(df: pd.DataFrame, mallow_disps: list[str] = None, voters: list
         category_orders={"profile_type": ["NC", "CW", "CR"]},
         color_discrete_map={"CR": "#f9f3dd", "CW": "#c7d4b8", "NC": "#8fc0a9"},
         labels={
-            "mallow_disp": "Mallow's dispersion",
-            "count": "Number of rankings",
+            "mallow_disp": "Mallows model dispersion",
+            "count": "Number of profiles",
             "num_alternatives": "Alternatives",
             "num_voters": "Voters",
             "profile_type": "Profile type",
@@ -131,8 +131,8 @@ def generate_plot(df: pd.DataFrame, mallow_disps: list[str] = None, voters: list
     #     fig.update_xaxes(showgrid=True, ticks="outside", tickson="labels", ticklen=5, row=1, col=1 + i)
 
     # Add titles to each axis
-    fig.update_xaxes(title_text="Mallow's dispersion", row=1, col=3)
-    fig.update_yaxes(title_text="Number of rankings", row=2, col=1)
+    fig.update_xaxes(title_text="Mallows model dispersion", row=1, col=3)
+    fig.update_yaxes(title_text="Number of profiles", row=2, col=1)
 
     # Update text in facet titles
     fig.for_each_annotation(lambda a: a.update(text=a.text.replace("=", ": ")))
@@ -151,7 +151,7 @@ def generate_plot(df: pd.DataFrame, mallow_disps: list[str] = None, voters: list
     fig.update_layout(
         font=dict(family="Times New Roman", size=13.33),
         plot_bgcolor="white",
-        legend=dict(orientation="h", y=-0.15, x=0.5, xanchor="center", yanchor="bottom"),
+        legend=dict(orientation="h", y=-0.15, x=0.5, xanchor="center", yanchor="bottom", traceorder="reversed"),
         xaxis_title_standoff=0.5,
         yaxis_title_standoff=10,
         autosize=False,
@@ -181,7 +181,7 @@ if __name__ == "__main__":
     IMG_PATH_FOLDER = f"{get_disk_path()}/img/"
     COMB_CSV_FILE_NAME = "metrics_profile_mallow.csv"
 
-    SUMMARY_PLOT = False
+    SUMMARY_PLOT = True
 
     if SUMMARY_PLOT:
         IMG_NAME = "plot_cuadro_caepia_tfg_miguel"
@@ -203,5 +203,5 @@ if __name__ == "__main__":
         df,
         mallow_disps=MALLOW_DISPS_TO_PLOT,
         voters=VOTERS_TO_PLOT,
-        # img_path=f"{IMG_PATH_FOLDER}{IMG_NAME}_v1.svg",
+        img_path=f"{IMG_PATH_FOLDER}{IMG_NAME}_v1.svg",
     )
