@@ -2,9 +2,13 @@ import os
 import pandas as pd
 from fnmatch import fnmatch
 
+import plotly.io as pio
+import plotly.express as px
+import plotly.colors as pc
+
 from ranking_aggregation.disk_operations.disk_operations import get_disk_path
 
-from utils import get_info_from_name, check_create_file, add_profile_type
+from utils import get_info_from_name, check_create_file, add_profile_type, add_borda_winner_pctl
 
 
 def load_df_metrics(dirpath: str, comb_csv_file_name: str) -> pd.DataFrame:
@@ -43,14 +47,18 @@ def load_df_metrics(dirpath: str, comb_csv_file_name: str) -> pd.DataFrame:
     return df
 
 
-def generate_plot(df: pd.DataFrame, mallow_disps: list[str] = None, voters: list[float] = None, img_path: str = None):
+def generate_plot(
+    df: pd.DataFrame, col_to_plot: str, mallow_disps: list[str] = None, voters: list[float] = None, img_path: str = None
+):
     """
     Parameters
     ----------
     df : pandas.DataFrame
         The dataframe with the data to plot.
+    col_to_plot : str
+        The column of the df to plot.
     mallow_disps : list[str]
-        The Mallow's dispersions to plot. Optional, if None all the Mallow's dispersions are plotted.
+        The Mallows dispersions to plot. Optional, if None all the Mallows dispersions are plotted.
     voters : list[float]
         The number of voters to plot. Optional, if None all the number of voters are plotted.
     img_path : str
@@ -61,7 +69,10 @@ def generate_plot(df: pd.DataFrame, mallow_disps: list[str] = None, voters: list
     fig : plotly.graph_objs.Figure
         The plot figure
     """
-    # Filter out the Mallow's dispersions and the number of voters
+    if col_to_plot not in df.columns:
+        raise ValueError(f"The column {col_to_plot} does not exist in the dataframe.")
+
+    # Filter out the Mallows dispersions and the number of voters
     if mallow_disps is not None:
         df.loc[:, "mallow_disp"] = df["mallow_disp"].astype(float)
         df = df[df["mallow_disp"].isin(mallow_disps)]
@@ -70,32 +81,58 @@ def generate_plot(df: pd.DataFrame, mallow_disps: list[str] = None, voters: list
         df.loc[:, "num_voters"] = df["num_voters"].astype(float)
         df = df[df["num_voters"].isin(voters)]
 
-    # Convert the Mallow's dispersions to string again to plot them as cathegorical variables
+    # Convert the Mallows dispersions to string again to plot them as cathegorical variables
     df.loc[:, "mallow_disp"] = df["mallow_disp"].astype(str)
 
-    # Group the data by the number of alternatives, the number of voters, the Mallow's dispersion and the profile type
+    # Group the data by the number of alternatives, the number of voters, the Mallows dispersion and the profile type
     df_grouped = (
-        df.groupby(["num_alternatives", "num_voters", "mallow_disp", "profile_type"]).size().reset_index(name="count")
+        df.groupby(["num_alternatives", "num_voters", "mallow_disp", col_to_plot]).size().reset_index(name="count")
     )
+
+    cat_orders = {"profile_type": ["NC", "CW", "CR"]}
+    color_palette = {"CR": "#f9f3dd", "CW": "#c7d4b8", "NC": "#8fc0a9"}
+
+    if "borda_winner_pctl" in df.columns:
+        borda_values = df["borda_winner_pctl"].unique()
+        n_b_v = len(borda_values)
+
+        cat_orders["borda_winner_pctl"] = sorted(
+            borda_values,
+            key=lambda x: (float(x.split("-")[0].strip("%")), float(x.split("-")[1].strip("%"))),
+            reverse=True,
+        )
+
+        color_palette.update(
+            dict(
+                zip(
+                    cat_orders["borda_winner_pctl"],
+                    pc.sample_colorscale(
+                        pc.make_colorscale(["#f9f3dd", "#8fc0a9", "#567365"]),
+                        [(1 / (n_b_v - 1)) * i for i in range(n_b_v)],
+                    ),
+                )
+            )
+        )
 
     # Plot the data
     fig = px.bar(
         df_grouped,
         x="mallow_disp",
         y="count",
-        color="profile_type",
+        color=col_to_plot,
         facet_col="num_voters",
         facet_row="num_alternatives",
         # text="count",
         text=df_grouped["count"].apply(lambda x: x if x >= 11 else None),
-        category_orders={"profile_type": ["NC", "CW", "CR"]},
-        color_discrete_map={"CR": "#f9f3dd", "CW": "#c7d4b8", "NC": "#8fc0a9"},
+        category_orders=cat_orders,
+        color_discrete_map=color_palette,
         labels={
             "mallow_disp": "Mallows model dispersion",
             "count": "Number of profiles",
             "num_alternatives": "Alternatives",
             "num_voters": "Voters",
             "profile_type": "Profile type",
+            "borda_winner_pctl": "Maximum Borda Score percentage",
         },
     )
 
@@ -172,36 +209,42 @@ def generate_plot(df: pd.DataFrame, mallow_disps: list[str] = None, voters: list
 
 
 if __name__ == "__main__":
-    import plotly.io as pio
-    import plotly.express as px
-
     pio.renderers.default = "notebook"
 
     PATH_FOLDER = f"{get_disk_path()}/profiles/mallow/metrics/"
     IMG_PATH_FOLDER = f"{get_disk_path()}/img/"
     COMB_CSV_FILE_NAME = "metrics_profile_mallow.csv"
 
-    SUMMARY_PLOT = True
+    SAVE_TO_DISK = False  # Save the figure to disk or not
+
+    SUMMARY_PLOT = False  # Generate plot with wider range of Mallows dispersions or range closer to IC
+
+    COL_TO_PLOT = "borda_winner_pctl"  # "profile_type"  # Column to plot
+
+    BORDA_RANGES = [0.1 * i for i in range(1, 10)]  # Rango of percentiles of Borda max winner rate
 
     if SUMMARY_PLOT:
-        IMG_NAME = "plot_cuadro_caepia_tfg_miguel"
-        MALLOW_DISPS_TO_PLOT = [0.1, 0.4, 0.7, 1.0]
+        IMG_NAME = f"n_altn_vs_n_voters_vs_broad_disp_{COL_TO_PLOT}"
+        MALLOW_DISPS_TO_PLOT = [0.1, 0.4, 0.7, 1.0]  # Range of Mallows dispersions to plot
     else:
-        IMG_NAME = "plot_cuadro_caepia"
+        IMG_NAME = f"n_altn_vs_n_voters_vs_ic_close_disp_{COL_TO_PLOT}"
         # MALLOW_DISPS_TO_PLOT = [0.5, 0.6, 0.7, 0.80, 0.90, 1.0]
-        MALLOW_DISPS_TO_PLOT = [0.7, 0.75, 0.80, 0.85, 0.90, 0.95, 1.0]
+        MALLOW_DISPS_TO_PLOT = [0.7, 0.75, 0.80, 0.85, 0.90, 0.95, 1.0]  # Range of Mallows dispersions to plot
 
-    VOTERS_TO_PLOT = [10, 50, 100, 200, 500, 1000]
+    VOTERS_TO_PLOT = [10, 50, 100, 200, 500, 1000]  # Range of voters to plot
 
     # df = load_df_metrics(PATH_FOLDER, COMB_CSV_FILE_NAME)
 
     df = pd.read_csv(PATH_FOLDER + COMB_CSV_FILE_NAME)
 
-    df = add_profile_type(df)
+    df = add_profile_type(df)  # Add profile type column (CR, CW, NC)
+
+    df = add_borda_winner_pctl(df, BORDA_RANGES)  # Add Borda max winner rate percentiles
 
     fig = generate_plot(
         df,
+        COL_TO_PLOT,
         mallow_disps=MALLOW_DISPS_TO_PLOT,
         voters=VOTERS_TO_PLOT,
-        img_path=f"{IMG_PATH_FOLDER}{IMG_NAME}_v1.svg",
+        img_path=f"{IMG_PATH_FOLDER}{IMG_NAME}.svg" if SAVE_TO_DISK else None,
     )
