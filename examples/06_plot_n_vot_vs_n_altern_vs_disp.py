@@ -89,25 +89,31 @@ def generate_plot(
         df.groupby(["num_alternatives", "num_voters", "mallow_disp", col_to_plot]).size().reset_index(name="count")
     )
 
-    cat_orders = {"profile_type": ["NC", "CW", "CR"]}
+    # Sorting of the different categorical values
+    cat_orders = {"profile_type": ["NC", "CW", "CR"], "mallow_disp": sorted(df_grouped["mallow_disp"].unique())}
+
+    # Color palette for the different cathegorical metrics
     color_palette = {"CR": "#f9f3dd", "CW": "#c7d4b8", "NC": "#8fc0a9"}
 
+    # Add the sorting and color palette for the Borda max winner rate
     if "borda_winner_pctl" in df.columns:
         borda_values = df["borda_winner_pctl"].unique()
         n_b_v = len(borda_values)
 
+        # Update sorting
         cat_orders["borda_winner_pctl"] = sorted(
             borda_values,
             key=lambda x: (float(x.split("-")[0].strip("%")), float(x.split("-")[1].strip("%"))),
             reverse=True,
         )
 
+        # Update color palette
         color_palette.update(
             dict(
                 zip(
                     cat_orders["borda_winner_pctl"],
                     pc.sample_colorscale(
-                        pc.make_colorscale(["#f9f3dd", "#8fc0a9", "#567365"]),
+                        pc.make_colorscale(["#DCF2F1", "#7FC7D9", "#5a89db", "#7131d0"]),
                         [(1 / (n_b_v - 1)) * i for i in range(n_b_v)],
                     ),
                 )
@@ -154,13 +160,6 @@ def generate_plot(
         linewidth=1,
         linecolor="#323232",
         mirror=True,
-        # tickmode="linear",
-        # dtick=0.05,
-        # tick0=0.7,
-        # tickmode="array",
-        # tickvals=[0.7 + 0.05 * i for i in range(len(df["mallow_disp"].unique()))],
-        # ticktext=[f"{0.7 + 0.05 * i:.1f}" if i % 2 == 0 else "" for i in range(len(df["mallow_disp"].unique()))],
-        # tickangle=0,
     )
 
     # Uncomment to show grid of ticks in last row of x axes
@@ -200,7 +199,6 @@ def generate_plot(
 
     if img_path is not None:
         check_create_file(img_path)
-        # fig.write_image(img_path, format="png", scale=6)
         fig.write_image(img_path, format=img_path.split(".")[-1], scale=6)
 
     fig.show()
@@ -215,11 +213,13 @@ if __name__ == "__main__":
     IMG_PATH_FOLDER = f"{get_disk_path()}/img/"
     COMB_CSV_FILE_NAME = "metrics_profile_mallow.csv"
 
-    SAVE_TO_DISK = False  # Save the figure to disk or not
+    SAVE_TO_DISK = True  # Save the figure to disk or not
 
     SUMMARY_PLOT = False  # Generate plot with wider range of Mallows dispersions or range closer to IC
 
-    COL_TO_PLOT = "borda_winner_pctl"  # "profile_type"  # Column to plot
+    # Column to plot
+    METRICS = {0: "profile_type", 1: "borda_winner_pctl"}
+    COL_TO_PLOT = METRICS[1]
 
     BORDA_RANGES = [0.1 * i for i in range(1, 10)]  # Rango of percentiles of Borda max winner rate
 
