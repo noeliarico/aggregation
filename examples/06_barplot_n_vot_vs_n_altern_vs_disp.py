@@ -1,50 +1,11 @@
-import os
 import pandas as pd
-from fnmatch import fnmatch
 
-import plotly.io as pio
 import plotly.express as px
 import plotly.colors as pc
 
 from ranking_aggregation.disk_operations.disk_operations import get_disk_path
 
-from utils import get_info_from_name, check_create_file, add_profile_type, add_borda_winner_pctl
-
-
-def load_df_metrics(dirpath: str, comb_csv_file_name: str) -> pd.DataFrame:
-    """
-    Load all the .csv files in the directory dirpath and return a dataframe.
-
-    Parameters
-    ----------
-    dirpath : str
-        The directory where the .csv files are located.
-    comb_csv_file_name : str
-        The name to the .csv file where the combination of all .csv files is going to be stored.
-
-    Returns
-    -------
-    df : pandas.DataFrame
-        A dataframe with all the data from the .csv files in the directory.
-    """
-    # Crear un dataframe vacío
-    df = pd.DataFrame()
-
-    # Leer todos los archivos .csv del directorio dirpath
-    for path, subdirs, files in os.walk(dirpath):
-        for name in files:
-            if fnmatch(name, "*.csv") and name != "metrics_profile_mallow.csv":
-                new_df = pd.read_csv(path + name)
-
-                info = get_info_from_name(name, metrics=True)
-
-                new_df.insert(3, "mallow_disp", [info["mallow_disp"] for i in range(len(new_df))])
-
-                df = pd.concat([df, new_df]).reset_index(drop=True)
-
-    df.to_csv(dirpath + comb_csv_file_name, mode="w+")  # mode overwrite
-
-    return df
+from utils import load_df_metrics, check_create_file, add_profile_type, add_borda_winner_pctl
 
 
 def generate_plot(
@@ -207,13 +168,15 @@ def generate_plot(
 
 
 if __name__ == "__main__":
+    import plotly.io as pio
+
     pio.renderers.default = "notebook"
 
     PATH_FOLDER = f"{get_disk_path()}/profiles/mallow/metrics/"
     IMG_PATH_FOLDER = f"{get_disk_path()}/img/"
     COMB_CSV_FILE_NAME = "metrics_profile_mallow.csv"
 
-    SAVE_TO_DISK = True  # Save the figure to disk or not
+    SAVE_TO_DISK = False  # Save the figure to disk or not
 
     SUMMARY_PLOT = False  # Generate plot with wider range of Mallows dispersions or range closer to IC
 

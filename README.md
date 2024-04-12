@@ -1,14 +1,25 @@
 # Table of contents
 
 - [Table of contents](#table-of-contents)
-- [Quick installation](#quick-installation)
+- [Package installation](#package-installation)
+- [Create package distributable](#create-package-distributable)
 - [Commits guide](#commits-guide)
 
-# Quick installation
+# Package installation
 
 ```
 pip install aggregation
 ```
+
+# Create package distributable
+
+Run `py -m pip install --upgrade build` and then, on the root folder of the project, run `py -m build`. This will generate the distributable, which can be installed locally by executing `pip install .\dist\ranking_aggregation-<version>.tar.gz`.
+
+References:
+
+- [Packaging and distributing projects - Python Packaging User Guide](https://packaging.python.org/en/latest/guides/distributing-packages-using-setuptools/)
+
+- [Packaging Python Projects - Python Packaging User Guide](https://packaging.python.org/en/latest/tutorials/packaging-projects/)
 
 # Commits guide
 

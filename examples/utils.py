@@ -1,8 +1,12 @@
-# Function to get info about the filename
+import pickle
 import os
-
+from fnmatch import fnmatch
+from ipywidgets import widgets
+from ipywidgets.embed import embed_minimal_html
+from selenium import webdriver
 import numpy as np
 import pandas as pd
+import time
 
 
 def get_info_from_name(text: str, metrics: bool = False):
@@ -152,3 +156,108 @@ def add_borda_winner_pctl(df: pd.DataFrame, ranges: list[float]) -> pd.DataFrame
     )
 
     return df
+
+
+def load_df_metrics(dirpath: str, comb_csv_file_name: str) -> pd.DataFrame:
+    """
+    Load all the .csv files in the directory dirpath and return a dataframe.
+
+    Parameters
+    ----------
+    dirpath : str
+        The directory where the .csv files are located.
+    comb_csv_file_name : str
+        The name to the .csv file where the combination of all .csv files is going to be stored.
+
+    Returns
+    -------
+    df : pandas.DataFrame
+        A dataframe with all the data from the .csv files in the directory.
+    """
+    # Crear un dataframe vacío
+    df = pd.DataFrame()
+
+    # Leer todos los archivos .csv del directorio dirpath
+    for path, subdirs, files in os.walk(dirpath):
+        for name in files:
+            if fnmatch(name, "*.csv") and name != comb_csv_file_name:
+                new_df = pd.read_csv(path + name)
+
+                info = get_info_from_name(name, metrics=True)
+
+                new_df.insert(3, "mallow_disp", [info["mallow_disp"] for i in range(len(new_df))])
+
+                df = pd.concat([df, new_df]).reset_index(drop=True)
+
+    df.to_csv(dirpath + comb_csv_file_name, mode="w+", index=False)  # mode overwrite
+
+    return df
+
+
+def load_list_of_profiles(file_name: str):
+    """
+    Load a list of profiles from a file.
+
+    Parameters
+    ----------
+    file_name : str
+        The name of the file where the profiles are stored.
+
+    Returns
+    -------
+    profiles : list
+        The list of profiles.
+    """
+    with open(file_name, "rb") as file_handler:
+        profiles = pickle.load(file_handler)
+    return profiles
+
+
+def check_create_file(filename: str):
+    """
+    Check if the file exists. If not, create it.
+
+    Parameters
+    ----------
+    filename : str
+        The path to the file.
+    """
+    if not os.path.exists(filename):
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
+        with open(filename, "w"):
+            pass
+
+
+def widget_to_png(widget: widgets.Widget, filename: str):
+    """
+    Save a widget from ipywidgets as an PNG file.
+
+    Parameters
+    ----------
+    widget : ipywidgets.Widget
+        The widget to save as an PNG file.
+    filename : str
+        The path to save the PNG file.
+    """
+    temp_html = "export.html"
+
+    # Save the widget as an HTML file
+    embed_minimal_html(temp_html, views=[widget], title="Widgets export")
+
+    # Configure the browser to take a screenshot of the widget
+    driver = webdriver.Chrome()
+    driver.get("file:///" + os.path.abspath(temp_html))
+
+    time.sleep(5)
+
+    driver.set_window_size(720, 1250)
+
+    # Take a screenshot of the widget and save it as an SVG file
+    # svg_content = driver.execute_script('return document.getElementsByTagName("body")[0].innerHTML')
+    # with open(filename, "w") as f:
+    #     f.write(svg_content)
+
+    driver.save_screenshot(filename)
+
+    driver.quit()
+    os.remove(temp_html)

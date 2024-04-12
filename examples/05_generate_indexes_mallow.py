@@ -17,21 +17,7 @@ from ranking_aggregation.ranking_rules.condorcet import (
 from ranking_aggregation.disk_operations.disk_operations import get_disk_path
 
 
-from utils import get_info_from_name
-
-
-def check_create_file(filename):
-    if not os.path.exists(filename):
-        os.makedirs(os.path.dirname(filename), exist_ok=True)
-        with open(filename, "w"):
-            pass
-
-
-# Load list of profiles from object
-def load_list_of_profiles(file_name):
-    file_handler = open(file_name, "rb")
-    profiles = pickle.load(file_handler)
-    return profiles
+from utils import get_info_from_name, load_list_of_profiles, check_create_file
 
 
 # Two examples:
