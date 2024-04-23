@@ -74,7 +74,8 @@ def generate_plot(
                 zip(
                     cat_orders["borda_winner_pctl"],
                     pc.sample_colorscale(
-                        pc.make_colorscale(["#DCF2F1", "#7FC7D9", "#5a89db", "#7131d0"]),
+                        # pc.make_colorscale(["#DCF2F1", "#7FC7D9", "#5a89db", "#7131d0"]),
+                        pc.make_colorscale(["#F9DEC9", "#F78CA2", "#D80032"]),
                         [(1 / (n_b_v - 1)) * i for i in range(n_b_v)],
                     ),
                 )

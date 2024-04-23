@@ -77,12 +77,13 @@ def create_profiles_using_mallow(num_alternatives, num_voters, reps, dispersions
 if __name__ == "__main__":
     # Definition of parameters
     reps = 100
+
     nums_alternatives = [5, 10, 15, 20]
+
     nums_voters = [10, 20, 30, 40, 50, 100, 150, 200, 300, 400, 500, 650, 800, 1000]
-    # nums_voters = [10, 50, 100, 200, 500, 1000]
-    # dispersions = [0.1, 0.4, 0.5, 0.6] + [0.7, 0.73, 0.76, 0.79, 0.82, 0.85, 0.88, 0.91, 0.94, 0.97, 1.0]
+    nums_voters = [i + 1 for i in nums_voters]
+
     dispersions = [0.1, 0.4, 0.5, 0.6, 0.7, 0.75, 0.80, 0.85, 0.90, 0.95, 1.0]
-    # dispersions = [0.1, 0.4, 0.7, 1]
 
     path_folder = f"{get_disk_path()}/profiles/mallow/"
 

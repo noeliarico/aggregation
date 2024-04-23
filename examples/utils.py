@@ -158,6 +158,91 @@ def add_borda_winner_pctl(df: pd.DataFrame, ranges: list[float]) -> pd.DataFrame
     return df
 
 
+def add_borda_winner_index(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Add a new column to the dataframe with the index of the Borda winner alternative.
+
+    The new column is named `borda_winner_idx`.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        The dataframe to modify.
+
+    Returns
+    -------
+    df : pandas.DataFrame
+        The modified dataframe.
+    """
+    df["borda_winner_idx"] = df["borda_score_normalized"].apply(
+        lambda x: np.argmax(np.array(list(map(float, x.strip("[]").split()))))
+    )
+
+    return df
+
+
+def add_borda_index(df: pd.DataFrame, index: int) -> pd.DataFrame:
+    """
+    Add a new column to the dataframe with the index of the Borda winner alternative.
+
+    The new column is named `borda_winner_idx`.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        The dataframe to modify.
+    index : int
+        The index of the Borda alternative. Starting in zero.
+
+    Returns
+    -------
+    df : pandas.DataFrame
+        The modified dataframe.
+    """
+    index += 1
+    df[f"borda_{index}_idx"] = df["borda_score_normalized"].apply(
+        lambda x: np.argsort(np.array(list(map(float, x.strip("[]").split()))))[::-1][:index][index - 1]
+    )
+
+    return df
+
+
+def add_borda_diff(df: pd.DataFrame, index1: int, index2: int) -> pd.DataFrame:
+    """
+    Add a new column to the dataframe with the difference between the Borda scores of the alternatives
+    with indexes index1 and index2 (index1 - index2).
+
+    The new column is named `borda_diff_{index1}_{index2}`.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        The dataframe to modify.
+    index1 : int
+        The index of the first alternative. Starting in zero.
+    index2 : int
+        The index of the second alternative. Starting in zero.
+
+    Returns
+    -------
+    df : pandas.DataFrame
+        The modified dataframe.
+    """
+    index1 += 1
+    index2 += 1
+
+    def get_borda_diff(borda_list: list) -> float:
+        borda_list = np.array(list(map(float, borda_list.strip("[]").split())))
+        borda_argsort = np.argsort(borda_list)[::-1]
+        borda1 = float(borda_list[borda_argsort[:index1][index1 - 1]])
+        borda2 = float(borda_list[borda_argsort[:index2][index2 - 1]])
+        return borda1 - borda2
+
+    df[f"borda_diff_{index1-1}_{index2-1}"] = df["borda_score_normalized"].apply(get_borda_diff)
+
+    return df
+
+
 def load_df_metrics(dirpath: str, comb_csv_file_name: str) -> pd.DataFrame:
     """
     Load all the .csv files in the directory dirpath and return a dataframe.
