@@ -335,12 +335,7 @@ if __name__ == "__main__":
     if ALL_METRICS:
         box = generate_plot_all_metrics(
             df,
-            # img_path=f"{IMG_PATH_FOLDER}{IMG_NAME}.png" if SAVE_TO_DISK else None,
-            img_path=(
-                f"C:/Users/villarmario/OneDrive - Universidad de Oviedo/compartida_noelia_mario/inv/congresos/2024_ecai/graficos_distancia_kemeny/{IMG_NAME}.png"
-                if SAVE_TO_DISK
-                else None
-            ),
+            img_path=f"{IMG_PATH_FOLDER}{IMG_NAME}.png" if SAVE_TO_DISK else None,
             col_x="n_a",
             col_facet_cols="n_v",
             col_colour="m_d",

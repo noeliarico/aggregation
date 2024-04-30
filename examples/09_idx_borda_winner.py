@@ -233,10 +233,10 @@ if __name__ == "__main__":
     BORDA_RANGES = [0.1 * i for i in range(1, 10)]  # Rango of percentiles of Borda max winner rate
 
     if SUMMARY_PLOT:
-        IMG_NAME = f"n_altn_vs_n_voters_vs_broad_disp_{COL_TO_PLOT}"
+        IMG_NAME = f"n_a_vs_n_v_vs_broad_disp_{COL_TO_PLOT}"
         MALLOW_DISPS_TO_PLOT = [0.1, 0.4, 0.7, 1.0]  # Range of Mallows dispersions to plot
     else:
-        IMG_NAME = f"n_altn_vs_n_voters_vs_ic_close_disp_{COL_TO_PLOT}"
+        IMG_NAME = f"n_a_vs_n_v_vs_ic_close_disp_{COL_TO_PLOT}"
         # MALLOW_DISPS_TO_PLOT = [0.5, 0.6, 0.7, 0.80, 0.90, 1.0]
         MALLOW_DISPS_TO_PLOT = [0.7, 0.75, 0.80, 0.85, 0.90, 0.95, 1.0]  # Range of Mallows dispersions to plot
 

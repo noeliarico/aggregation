@@ -71,7 +71,7 @@ def create_profiles_using_mallow(num_alternatives, num_voters, reps, dispersions
     # print(df)
 
     # Save the specifications about how the datasets where generated
-    df.to_csv(path_folder + "mallow1.csv", index=False, mode="w+")  # mode overwrite
+    df.to_csv(path_folder + "mallow_specs.csv", index=False, mode="w+")  # mode overwrite
 
 
 if __name__ == "__main__":

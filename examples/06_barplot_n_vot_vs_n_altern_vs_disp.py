@@ -100,11 +100,11 @@ def generate_plot(
             "num_alternatives": "Alternatives",
             "num_voters": "Voters",
             "profile_type": "Profile type",
-            "borda_winner_pctl": "Maximum Borda Score percentage",
+            "borda_winner_pctl": "Percentage of the maximum Borda score",
         },
     )
 
-    y_margin = (df_grouped["count"].max() - df_grouped["count"].min()) * 0.05
+    # y_margin = (df_grouped["count"].max() - df_grouped["count"].min()) * 0.05
 
     fig.update_yaxes(
         showticklabels=False,  # Do not show tick labels
@@ -113,7 +113,8 @@ def generate_plot(
         linewidth=1,
         linecolor="#323232",
         mirror=True,
-        range=[df_grouped["count"].min() - y_margin, df_grouped["count"].max() + y_margin],
+        # range=[df_grouped["count"].min() - y_margin, df_grouped["count"].max() + y_margin],
+        range=[-2, 102],
     )
 
     fig.update_xaxes(
@@ -173,13 +174,13 @@ if __name__ == "__main__":
 
     pio.renderers.default = "notebook"
 
-    PATH_FOLDER = f"{get_disk_path()}/profiles/mallow/metrics/"
+    PATH_FOLDER = f"{get_disk_path()}/profiles/mallow_preflibtools_2_0_13/metrics/"
     IMG_PATH_FOLDER = f"{get_disk_path()}/img/"
     COMB_CSV_FILE_NAME = "metrics_profile_mallow.csv"
 
-    SAVE_TO_DISK = False  # Save the figure to disk or not
+    SAVE_TO_DISK = True  # Save the figure to disk or not
 
-    SUMMARY_PLOT = False  # Generate plot with wider range of Mallows dispersions or range closer to IC
+    SUMMARY_PLOT = True  # Generate plot with wider range of Mallows dispersions or range closer to IC
 
     # Column to plot
     METRICS = {0: "profile_type", 1: "borda_winner_pctl"}
@@ -188,10 +189,10 @@ if __name__ == "__main__":
     BORDA_RANGES = [0.1 * i for i in range(1, 10)]  # Rango of percentiles of Borda max winner rate
 
     if SUMMARY_PLOT:
-        IMG_NAME = f"n_altn_vs_n_voters_vs_broad_disp_{COL_TO_PLOT}"
+        IMG_NAME = f"n_a_vs_n_v_vs_broad_disp_{COL_TO_PLOT}"
         MALLOW_DISPS_TO_PLOT = [0.1, 0.4, 0.7, 1.0]  # Range of Mallows dispersions to plot
     else:
-        IMG_NAME = f"n_altn_vs_n_voters_vs_ic_close_disp_{COL_TO_PLOT}"
+        IMG_NAME = f"n_a_vs_n_v_vs_ic_close_disp_{COL_TO_PLOT}"
         # MALLOW_DISPS_TO_PLOT = [0.5, 0.6, 0.7, 0.80, 0.90, 1.0]
         MALLOW_DISPS_TO_PLOT = [0.7, 0.75, 0.80, 0.85, 0.90, 0.95, 1.0]  # Range of Mallows dispersions to plot
 
