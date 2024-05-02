@@ -26,35 +26,53 @@ def preflib_to_pairwise_preferences_matrix(rankings, weights):
     """Computes for each pair of alternatives that number of voters that
     prefer one over the other in any ranking
     """
-
     # rankings, weights = preflib_divide(preflib_profile)
     num_unique_rankings, num_alternatives = rankings.shape
+
     # Initialize the matrix
     pref_matrix = np.zeros((num_alternatives, num_alternatives), dtype=int)
-    # Do the counting
+
+    # NON NUMPY VERSION
+    # # Do the counting
+    # for i in range(num_alternatives):  # alternative i
+    #     for j in range(i + 1, num_alternatives):  # alternative j
+    #         # for each pair of alternatives i,j count the number of times that
+    #         # i is in a better position than j
+    #         # i is in a worse position than j
+    #         # both are tied
+    #         i_better_than_j = 0
+    #         i_worse_than_j = 0
+    #         # check it in each ranking...
+    #         for k in range(num_unique_rankings):
+    #             r = rankings[k, :]
+    #             pos_i = np.argwhere(r == i)[0][0]
+    #             pos_j = np.argwhere(r == j)[0][0]
+    #             if pos_i < pos_j:  # i in a better position than j
+    #                 i_better_than_j += 1 * weights[k]
+    #             elif pos_j < pos_i:  # i in a worse position than j
+    #                 i_worse_than_j += 1 * weights[k]
+    #             else:  # they are in the same position
+    #                 i_better_than_j += 0.5 * weights[k]
+    #                 i_worse_than_j += 0.5 * weights[k]
+    #         # After checking all the rankings update the matrix
+    #         pref_matrix[i, j] = i_better_than_j
+    #         pref_matrix[j, i] = i_worse_than_j
+
+    # NUMPY VERSION
+    # Get matrix of the index in each unique ranking of each alternative
+    idx_matrix = np.zeros((num_unique_rankings, num_alternatives), dtype=int)
+
+    for altern in range(num_alternatives):
+        idx_matrix[:, altern] = np.where(rankings == altern)[1]
+
+    # Count preference matrix
     for i in range(num_alternatives):  # alternative i
         for j in range(i + 1, num_alternatives):  # alternative j
-            # for each pair of alternatives i,j count the number of times that
-            # i is in a better position than j
-            # i is in a worse position than j
-            # both are tied
-            i_better_than_j = 0
-            i_worse_than_j = 0
-            # check it in each ranking...
-            for k in range(num_unique_rankings):
-                r = rankings[k, :]
-                pos_i = np.argwhere(r == i)[0][0]
-                pos_j = np.argwhere(r == j)[0][0]
-                if pos_i < pos_j:  # i in a better position than j
-                    i_better_than_j += 1 * weights[k]
-                elif pos_j < pos_i:  # i in a worse position than j
-                    i_worse_than_j += 1 * weights[k]
-                else:  # they are in the same position
-                    i_better_than_j += 0.5 * weights[k]
-                    i_worse_than_j += 0.5 * weights[k]
-            # After checking all the rankings update the matrix
-            pref_matrix[i, j] = i_better_than_j
-            pref_matrix[j, i] = i_worse_than_j
+            tie_sum = ((idx_matrix[:, i] == idx_matrix[:, j]) * weights * 0.5).sum()
+
+            pref_matrix[i, j] = ((idx_matrix[:, i] < idx_matrix[:, j]) * weights).sum() + tie_sum
+            pref_matrix[j, i] = ((idx_matrix[:, i] > idx_matrix[:, j]) * weights).sum() + tie_sum
+
     return pref_matrix
 
 
